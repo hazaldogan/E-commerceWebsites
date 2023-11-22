@@ -13,6 +13,7 @@ import {
   faTwitter,
   faYoutube,
 } from "@fortawesome/free-brands-svg-icons";
+import { NavLink } from "react-router-dom";
 
 export default function Header() {
   return (
@@ -64,13 +65,13 @@ export default function Header() {
             ["Contact", "/contact"],
             ["Pages", "/pages"],
           ].map(([title, url], idx) => (
-            <a
-              href={url}
+            <NavLink
+              to={url}
               key={idx}
               className=" text-neutral-500 font-bold text-sm leading-normal tracking-tigh hover:text-slate-900"
             >
               {title}
-            </a>
+            </NavLink>
           ))}
         </nav>
         <div className=" text-sky-500 items-center flex gap-10">

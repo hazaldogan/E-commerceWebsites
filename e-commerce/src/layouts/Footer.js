@@ -33,34 +33,42 @@ export default function Footer() {
           />
         </div>
       </div>
-      <div className="flex text-start justify-between">
-        <div className="flex flex-col">
+      <div className="flex text-start justify-between mt-8 text-sm">
+        <div className="flex flex-col gap-4">
           <h2 className="font-bold">Company Info</h2>
-          <a href="#">About Us</a>
-          <a href="#">Carrier</a>
-          <a href="#">We are hiring</a>
-          <a href="#">Blog</a>
+          <div className="flex flex-col gap-1.5">
+            <a href="#">About Us</a>
+            <a href="#">Carrier</a>
+            <a href="#">We are hiring</a>
+            <a href="#">Blog</a>
+          </div>
         </div>
-        <div className="flex flex-col">
+        <div className="flex flex-col gap-4">
           <h2 className="font-bold">Legal</h2>
-          <a href="#">About Us</a>
-          <a href="#">Carrier</a>
-          <a href="#">We are hiring</a>
-          <a href="#">Blog</a>
+          <div className="flex flex-col gap-1.5">
+            <a href="#">About Us</a>
+            <a href="#">Carrier</a>
+            <a href="#">We are hiring</a>
+            <a href="#">Blog</a>
+          </div>
         </div>
-        <div className="flex flex-col">
+        <div className="flex flex-col gap-4">
           <h2 className="font-bold">Features</h2>
-          <a href="#">About Us</a>
-          <a href="#">Carrier</a>
-          <a href="#">We are hiring</a>
-          <a href="#">Blog</a>
+          <div className="flex flex-col gap-1.5">
+            <a href="#">About Us</a>
+            <a href="#">Carrier</a>
+            <a href="#">We are hiring</a>
+            <a href="#">Blog</a>
+          </div>
         </div>
-        <div className="flex flex-col">
+        <div className="flex flex-col gap-4">
           <h2 className="font-bold">Resources</h2>
-          <a href="#">About Us</a>
-          <a href="#">Carrier</a>
-          <a href="#">We are hiring</a>
-          <a href="#">Blog</a>
+          <div className="flex flex-col gap-1.5">
+            <a href="#">About Us</a>
+            <a href="#">Carrier</a>
+            <a href="#">We are hiring</a>
+            <a href="#">Blog</a>
+          </div>
         </div>
       </div>
     </div>
