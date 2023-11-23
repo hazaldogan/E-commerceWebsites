@@ -1,13 +1,13 @@
-import Home from "./pages/Home";
 import Header from "./layouts/Header";
 import "./App.css";
 import Footer from "./layouts/Footer";
+import Main from "./layouts/Main";
 
 function App() {
   return (
     <div className="App">
       <Header />
-      <Home />
+      <Main />
       <Footer />
     </div>
   );
