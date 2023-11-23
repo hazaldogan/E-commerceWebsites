@@ -4,10 +4,8 @@ export default function CategoryList() {
   return (
     <div className="w-3/4 gap-12 items-center flex-col inline-flex mt-12 ">
       <div className="text-center flex flex-col">
-        <h2 className="text-slate-800 text-2xl font-bold leading-loose tracking-tight">
-          EDITOR'S PICK
-        </h2>
-        <p className="text-neutral-500 text-sm font-normal leading-tight tracking-tight">
+        <h2 className="text-slate-800 text-2xl font-bold ">EDITOR'S PICK</h2>
+        <p className="text-neutral-500 text-sm font-normal ">
           Problems trying to resolve the conflict between{" "}
         </p>
       </div>
@@ -17,7 +15,7 @@ export default function CategoryList() {
             src={data.categories[0].image}
             className="w-full h-full object-cover"
           />
-          <button className=" absolute bottom-[5%] left-[5%] w-44 text-slate-800 text-base font-bold leading-normal tracking-tight py-3 bg-white">
+          <button className=" absolute bottom-[5%] left-[5%] w-44 text-slate-800 text-base font-bold py-3 bg-white">
             {data.categories[0].name}
           </button>
         </div>
