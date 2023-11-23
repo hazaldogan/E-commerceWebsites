@@ -71,7 +71,7 @@ export default function FeaturedPosts() {
                 </p>
                 <FontAwesomeIcon
                   icon={faArrowRight}
-                  size="md"
+                  size="sm"
                   className="p-1 text-[#23A6F0]"
                 />
               </div>
