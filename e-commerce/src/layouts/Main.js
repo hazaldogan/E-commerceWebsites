@@ -1,4 +1,5 @@
 import Home from "../pages/Home";
+import ProductList from "../pages/ProductList";
 import { Switch, Route } from "react-router-dom";
 
 export default function Main() {
@@ -7,6 +8,9 @@ export default function Main() {
       <Switch>
         <Route exact path="/">
           <Home />
+        </Route>
+        <Route exact path="/product-list">
+          <ProductList />
         </Route>
       </Switch>
     </div>

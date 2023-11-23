@@ -17,6 +17,29 @@ import wintercouple from "./asian-woman-man-with-winter-clothes1.jpg";
 import featured1 from "./featured/featured1.jpg";
 import featured2 from "./featured/featured2.jpg";
 import featured3 from "./featured/featured3.jpg";
+import productcat1 from "./productscategory/productcat1.jpg";
+import productcat2 from "./productscategory/productcat2.jpg";
+import productcat3 from "./productscategory/productcat3.jpg";
+import productcat4 from "./productscategory/productcat4.jpg";
+import productcat5 from "./productscategory/productcat5.jpg";
+import productList1 from "./productlist/product1.jpg";
+import productList2 from "./productlist/product2.jpg";
+import productList3 from "./productlist/product3.jpg";
+import productList4 from "./productlist/product4.jpg";
+import productList5 from "./productlist/product5.jpg";
+import productList6 from "./productlist/product6.jpg";
+import productList7 from "./productlist/product7.jpg";
+import productList8 from "./productlist/product8.jpg";
+import productList9 from "./productlist/product9.jpg";
+import productList10 from "./productlist/product10.jpg";
+import productList11 from "./productlist/product11.jpg";
+import productList12 from "./productlist/product12.jpg";
+import logo1 from "./logos/logo1.jpg";
+import logo2 from "./logos/logo2.jpg";
+import logo3 from "./logos/logo3.jpg";
+import logo4 from "./logos/logo4.jpg";
+import logo5 from "./logos/logo5.jpg";
+import logo6 from "./logos/logo6.jpg";
 
 export const imageData = {
   slider: [slider1, slider2],
@@ -34,4 +57,26 @@ export const imageData = {
   sliderproduct: [sliderproduct],
   wintercouple,
   featured: [featured1, featured2, featured3],
+  productcategories: [
+    productcat1,
+    productcat2,
+    productcat3,
+    productcat4,
+    productcat5,
+  ],
+  productListDetail: [
+    productList1,
+    productList2,
+    productList3,
+    productList4,
+    productList5,
+    productList6,
+    productList7,
+    productList8,
+    productList9,
+    productList10,
+    productList11,
+    productList12,
+  ],
+  logos: [logo1, logo2, logo3, logo4, logo5, logo6],
 };

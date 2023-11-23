@@ -22,31 +22,33 @@ export default function Header() {
         <div className="flex flex-wrap">
           <div className="text-white items-center  p-2.5 gap-[5px] flex">
             <FontAwesomeIcon icon={faPhone} size="sm" />
-            <h6 className="text-sm font-bold leading-normal tracking-tight">
-              (225) 555-0118
-            </h6>
+            <h6 className="text-sm font-bold">(225) 555-0118</h6>
           </div>
           <div className="text-white items-center  p-2.5 gap-[5px] flex">
             <FontAwesomeIcon icon={faEnvelope} size="sm" />
-            <h6 className="text-sm font-bold leading-normal tracking-tight">
-              michelle.rivera@example.com
-            </h6>
+            <h6 className="text-sm font-bold">michelle.rivera@example.com</h6>
           </div>
         </div>
         <div className="p-2.5">
-          <h6 className="text-white text-sm font-bold leading-normal tracking-tight">
+          <h6 className="text-white text-sm font-bold">
             Follow Us and get a chance to win 80% off
           </h6>
         </div>
-        <div className="text-white items-center justify-start p-2.5 gap-2.5 flex">
-          <h6 className="text-sm font-bold leading-normal tracking-tight">
-            Follow Us :
-          </h6>
-          <div className="items-center justify-start gap-1 flex flex-wrap">
-            <FontAwesomeIcon icon={faInstagram} size="sm" className="p-1" />
-            <FontAwesomeIcon icon={faYoutube} size="sm" className="p-1" />
-            <FontAwesomeIcon icon={faFacebook} size="sm" className="p-1" />
-            <FontAwesomeIcon icon={faTwitter} size="sm" className="p-1" />
+        <div className="text-white items-center p-2.5 gap-2.5 flex">
+          <h6 className="text-sm font-bold">Follow Us :</h6>
+          <div className="items-center pt-1 gap-1 flex flex-wrap">
+            <a href="https://www.instagram.com/">
+              <FontAwesomeIcon icon={faInstagram} size="sm" className="p-1" />
+            </a>
+            <a href="https://www.youtube.com/">
+              <FontAwesomeIcon icon={faYoutube} size="sm" className="p-1" />
+            </a>
+            <a href="https://www.facebook.com/">
+              <FontAwesomeIcon icon={faFacebook} size="sm" className="p-1" />
+            </a>
+            <a href="https://www.twitter.com/">
+              <FontAwesomeIcon icon={faTwitter} size="sm" className="p-1" />
+            </a>
           </div>
         </div>
       </div>
@@ -59,7 +61,7 @@ export default function Header() {
         <nav className="justify-start items-start gap-4 flex ">
           {[
             ["Home", "/"],
-            ["Shop", "/shop"],
+            ["Shop", "/product-list"],
             ["About", "/about"],
             ["Blog", "/blog"],
             ["Contact", "/contact"],
