@@ -3,6 +3,7 @@ import BestsellerProducts from "../components/home/BestsellerProducts";
 import Slider from "../components/home/Slider";
 import SliderProducts from "../components/home/SliderProducts";
 import PopularProduct from "../components/home/PopularProduct";
+import FeaturedPosts from "../components/home/FeaturedPosts";
 
 export default function Home() {
   return (
@@ -12,6 +13,7 @@ export default function Home() {
       <BestsellerProducts />
       <SliderProducts />
       <PopularProduct />
+      <FeaturedPosts />
     </>
   );
 }

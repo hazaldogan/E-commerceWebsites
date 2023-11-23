@@ -14,10 +14,13 @@ import product7 from "./products/product7.jpg";
 import product8 from "./products/product8.jpg";
 import sliderproduct from "./slider/sliderproduct.jpg";
 import wintercouple from "./asian-woman-man-with-winter-clothes1.jpg";
+import featured1 from "./featured/featured1.jpg";
+import featured2 from "./featured/featured2.jpg";
+import featured3 from "./featured/featured3.jpg";
 
 export const imageData = {
   slider: [slider1, slider2],
-  editorspick: [filtermen, filterwoman, filteracc, filterkids],
+  categories: [filtermen, filterwoman, filteracc, filterkids],
   bestsellers: [
     product1,
     product2,
@@ -30,4 +33,5 @@ export const imageData = {
   ],
   sliderproduct: [sliderproduct],
   wintercouple,
+  featured: [featured1, featured2, featured3],
 };

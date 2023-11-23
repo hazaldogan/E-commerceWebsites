@@ -1,4 +1,4 @@
-import { imageData } from "../../assets/imageData";
+import { data } from "../../data";
 
 export default function CategoryList() {
   return (
@@ -14,40 +14,40 @@ export default function CategoryList() {
       <div className="flex gap-8 h-[500px] ">
         <div className="w-[50%] relative">
           <img
-            src={imageData.editorspick[0]}
+            src={data.categories[0].image}
             className="w-full h-full object-cover"
           />
           <button className=" absolute bottom-[5%] left-[5%] w-44 text-slate-800 text-base font-bold leading-normal tracking-tight py-3 bg-white">
-            MEN
+            {data.categories[0].name}
           </button>
         </div>
         <div className="w-[50%] flex gap-8">
           <div className="w-[50%] relative">
             <img
-              src={imageData.editorspick[1]}
+              src={data.categories[1].image}
               className="w-full h-full object-cover"
             />
-            <button className=" absolute bottom-[5%] left-[5%] w-44 text-slate-800 text-base font-bold leading-normal tracking-tight py-3 bg-white">
-              WOMAN
+            <button className=" absolute bottom-[5%] left-[5%] w-44 text-slate-800 text-base font-bold  py-3 bg-white">
+              {data.categories[1].name}
             </button>
           </div>
           <div className="w-[50%] flex flex-col gap-[2%]">
             <div className="w-full h-[49%] relative">
               <img
-                src={imageData.editorspick[2]}
+                src={data.categories[2].image}
                 className="w-full h-full object-cover"
               />
-              <button className=" absolute bottom-[5%] left-[5%] w-44 text-slate-800 text-base font-bold leading-normal tracking-tight py-3 bg-white">
-                ACCESSORIES
+              <button className=" absolute bottom-[5%] left-[5%] w-44 text-slate-800 text-base font-bold py-3 bg-white">
+                {data.categories[2].name}
               </button>
             </div>
             <div className="w-full h-[49%] relative">
               <img
-                src={imageData.editorspick[3]}
+                src={data.categories[3].image}
                 className="w-full h-full object-cover"
               />
-              <button className=" absolute bottom-[5%] left-[5%] w-44 text-slate-800 text-base font-bold leading-normal tracking-tight py-3 bg-white">
-                KIDS
+              <button className=" absolute bottom-[5%] left-[5%] w-44 text-slate-800 text-base font-bold py-3 bg-white">
+                {data.categories[3].name}
               </button>
             </div>
           </div>
