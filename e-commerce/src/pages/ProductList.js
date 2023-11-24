@@ -32,7 +32,6 @@ export default function ProductList() {
         ))}
       </div>
       <ProductListDetails />
-      <Pagination itemsPerPage={2} />
       <Logos />
     </div>
   );
