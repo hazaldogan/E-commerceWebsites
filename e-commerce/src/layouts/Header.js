@@ -54,9 +54,7 @@ export default function Header() {
       </div>
       <div className="flex justify-between items-center flex-wrap px-10">
         <header>
-          <h3 className="text-2xl text-slate-800 font-bold leading-loose tracking-tight">
-            Bandage
-          </h3>
+          <h3 className="text-2xl text-slate-800 font-bold ">Bandage</h3>
         </header>
         <nav className="justify-start items-start gap-4 flex ">
           {[
@@ -70,7 +68,7 @@ export default function Header() {
             <NavLink
               to={url}
               key={idx}
-              className=" text-neutral-500 font-bold text-sm leading-normal tracking-tigh hover:text-slate-900"
+              className=" text-neutral-500 font-bold text-sm hover:text-slate-900"
             >
               {title}
             </NavLink>
@@ -79,9 +77,7 @@ export default function Header() {
         <div className=" text-sky-500 items-center flex gap-10">
           <div className="items-center flex ">
             <FontAwesomeIcon icon={faUser} size="sm" className="" />
-            <div className=" font-bold leading-normal text-sm tracking-tight ">
-              Login / Register
-            </div>
+            <div className=" font-bold text-sm">Login / Register</div>
           </div>
           <div className="items-center flex">
             <FontAwesomeIcon icon={faSearch} size="sm" className="p-4" />
@@ -91,15 +87,11 @@ export default function Header() {
                 size="sm"
                 className="pr-1 "
               />
-              <div className=" font-normal leading-none text-sm tracking-tight ">
-                1
-              </div>
+              <div className=" font-normal text-sm ">1</div>
             </div>
             <div className=" flex items-center p-4">
               <FontAwesomeIcon icon={faHeart} size="sm" className="pr-1" />
-              <div className="font-normal leading-none text-sm tracking-tight">
-                1
-              </div>
+              <div className="font-normal text-sm ">1</div>
             </div>
           </div>
         </div>
