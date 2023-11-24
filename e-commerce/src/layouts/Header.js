@@ -22,20 +22,20 @@ export default function Header() {
         <div className="flex flex-wrap">
           <div className="text-white items-center  p-2.5 gap-[5px] flex">
             <FontAwesomeIcon icon={faPhone} size="sm" />
-            <h6 className="text-sm font-bold">(225) 555-0118</h6>
+            <h6 className="text-sm">(225) 555-0118</h6>
           </div>
           <div className="text-white items-center  p-2.5 gap-[5px] flex">
             <FontAwesomeIcon icon={faEnvelope} size="sm" />
-            <h6 className="text-sm font-bold">michelle.rivera@example.com</h6>
+            <h6 className="text-sm">michelle.rivera@example.com</h6>
           </div>
         </div>
         <div className="p-2.5">
-          <h6 className="text-white text-sm font-bold">
+          <h6 className="text-white text-sm">
             Follow Us and get a chance to win 80% off
           </h6>
         </div>
         <div className="text-white items-center p-2.5 gap-2.5 flex">
-          <h6 className="text-sm font-bold">Follow Us :</h6>
+          <h6 className="text-sm ">Follow Us :</h6>
           <div className="items-center pt-1 gap-1 flex flex-wrap">
             <a href="https://www.instagram.com/">
               <FontAwesomeIcon icon={faInstagram} size="sm" className="p-1" />
