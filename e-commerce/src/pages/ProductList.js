@@ -3,7 +3,7 @@ import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import { data } from "../data";
 import ProductListDetails from "../components/shop/ProductListDetail";
 import Logos from "../components/shop/Logos";
-import Pagination from "../components/shop/Pagination";
+import Pagination from "../components/Pagination";
 
 export default function ProductList() {
   return (
