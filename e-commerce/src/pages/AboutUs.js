@@ -15,7 +15,7 @@ export default function AboutUs() {
       <div className="flex">
         <div className="flex flex-col justify-center items-start text-start gap-5">
           <h4 className="text-xs font-bold">ABOUT COMPANY</h4>
-          <h1 className="text-4xl font-bold">ABOUT US</h1>
+          <h1 className="text-5xl font-bold">ABOUT US</h1>
           <p className="text-sm w-[60%]">
             We know how large objects will act, but things on a small scale
           </p>
