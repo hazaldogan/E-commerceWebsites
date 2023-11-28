@@ -33,7 +33,7 @@ export default function AboutUs() {
       </div>
       <div className="flex items-center justify-start text-start gap-10 my-14">
         <div className="flex flex-col gap-3 w-[50%]">
-          <p className="text-red-600 text-xs">Problems trying</p>
+          <p className="text-red-600 text-xs font-bold">Problems trying</p>
           <p className="font-bold text-2xl">
             Met minim Mollie non desert Alamo est sit cliquey dolor do met sent.
           </p>
@@ -64,7 +64,7 @@ export default function AboutUs() {
         </div>
       </div>
       <div className="flex justify-center items-center my-32">
-        <ReactPlayer url="https://www.youtube.com/watch?v=tAGnKpE4NCI" />
+        <ReactPlayer url="https://www.youtube.com/watch?v=adQyBxLvYwg" />
       </div>
       <div>
         <h2 className="font-bold text-3xl">Meet Our Team</h2>
