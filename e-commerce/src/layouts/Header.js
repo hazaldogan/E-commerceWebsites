@@ -60,7 +60,7 @@ export default function Header() {
           {[
             ["Home", "/"],
             ["Shop", "/product-list"],
-            ["About", "/about"],
+            ["About", "/aboutus"],
             ["Blog", "/blog"],
             ["Contact", "/contact"],
             ["Pages", "/pages"],

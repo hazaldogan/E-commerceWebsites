@@ -40,6 +40,11 @@ import logo3 from "./logos/logo3.jpg";
 import logo4 from "./logos/logo4.jpg";
 import logo5 from "./logos/logo5.jpg";
 import logo6 from "./logos/logo6.jpg";
+import aboutus from "./aboutus1.svg";
+import team1 from "./aboutteam/team1.jpg";
+import team2 from "./aboutteam/team2.jpg";
+import team3 from "./aboutteam/team3.jpg";
+import aboutband from "./aboutband.jpg";
 
 export const imageData = {
   slider: [slider1, slider2],
@@ -79,4 +84,7 @@ export const imageData = {
     productList12,
   ],
   logos: [logo1, logo2, logo3, logo4, logo5, logo6],
+  aboutus,
+  aboutteam: [team1, team2, team3],
+  aboutband,
 };

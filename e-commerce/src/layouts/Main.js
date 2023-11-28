@@ -2,6 +2,7 @@ import Home from "../pages/Home";
 import ProductList from "../pages/ProductList";
 import Product from "../pages/Product";
 import { Switch, Route } from "react-router-dom";
+import AboutUs from "../pages/AboutUs";
 
 export default function Main() {
   return (
@@ -15,6 +16,9 @@ export default function Main() {
         </Route>
         <Route exact path="/product/:id">
           <Product />
+        </Route>
+        <Route exact path="/aboutus">
+          <AboutUs />
         </Route>
       </Switch>
     </div>
