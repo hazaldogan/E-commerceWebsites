@@ -45,6 +45,22 @@ import team1 from "./aboutteam/team1.jpg";
 import team2 from "./aboutteam/team2.jpg";
 import team3 from "./aboutteam/team3.jpg";
 import aboutband from "./aboutband.jpg";
+import teampage1 from "./teampage/teampage1.jpg";
+import teampage2 from "./teampage/teampage2.jpg";
+import teampage3 from "./teampage/teampage3.jpg";
+import teampage4 from "./teampage/teampage4.jpg";
+import teampage5 from "./teampage/teampage5.jpg";
+import teamuser1 from "./teampage2/teamuser1.jpg";
+import teamuser2 from "./teampage2/teamuser2.jpg";
+import teamuser3 from "./teampage2/teamuser3.jpg";
+import teamuser4 from "./teampage2/teamuser4.jpg";
+import teamuser5 from "./teampage2/teamuser5.jpg";
+import teamuser6 from "./teampage2/teamuser6.jpg";
+import teamuser7 from "./teampage2/teamuser7.jpg";
+import teamuser8 from "./teampage2/teamuser8.jpg";
+import teamuser9 from "./teampage2/teamuser9.jpg";
+import facebook from "./logos_facebook.jpg";
+import linkedin from "./Vectorlinked.jpg";
 
 export const imageData = {
   slider: [slider1, slider2],
@@ -87,4 +103,18 @@ export const imageData = {
   aboutus,
   aboutteam: [team1, team2, team3],
   aboutband,
+  teampage: [teampage1, teampage2, teampage3, teampage4, teampage5],
+  teamusers: [
+    teamuser1,
+    teamuser2,
+    teamuser3,
+    teamuser4,
+    teamuser5,
+    teamuser6,
+    teamuser7,
+    teamuser8,
+    teamuser9,
+  ],
+  linkedin,
+  facebook,
 };

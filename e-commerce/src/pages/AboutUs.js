@@ -19,7 +19,7 @@ export default function AboutUs() {
           <p className="text-sm w-[60%]">
             We know how large objects will act, but things on a small scale
           </p>
-          <button className=" bg-sky-500 text-white text-xs px-5 py-2 rounded-md">
+          <button className="font-bold bg-sky-500 text-white text-xs px-5 py-2 rounded-md">
             Get Quote Now
           </button>
         </div>
@@ -72,13 +72,13 @@ export default function AboutUs() {
           Problems trying to resolve the conflict between the two major realms
           of Classical physics: Newtonian mechanics{" "}
         </p>
-        <div className="flex gap-7 flex-wrap my-20">
+        <div className="flex gap-7 flex-wrap my-20 justify-center items-center">
           {data.aboutteam.map((team, i) => (
-            <div className="flex flex-col gap-3">
+            <div key={i} className="flex flex-col gap-3">
               <img src={team.image} />
               <h6 className="font-bold text-sm">{team.username}</h6>
               <p className="font-bold text-gray-400 text-xs">{team.position}</p>
-              <div className="flex gap-2">
+              <div className="flex gap-2 items-center justify-center">
                 <a href="https://www.facebook.com/">
                   <FontAwesomeIcon
                     icon={faFacebook}
