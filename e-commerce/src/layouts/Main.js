@@ -4,6 +4,7 @@ import Product from "../pages/Product";
 import { Switch, Route } from "react-router-dom";
 import AboutUs from "../pages/AboutUs";
 import Team from "../pages/Team";
+import ContactUs from "../pages/ContactUs";
 
 export default function Main() {
   return (
@@ -23,6 +24,9 @@ export default function Main() {
         </Route>
         <Route exact path="/team">
           <Team />
+        </Route>
+        <Route exact path="/contactus">
+          <ContactUs />
         </Route>
       </Switch>
     </div>

@@ -62,7 +62,7 @@ export default function Header() {
             ["Shop", "/product-list"],
             ["About", "/aboutus"],
             ["Blog", "/blog"],
-            ["Contact", "/contact"],
+            ["Contact", "/contactus"],
             ["Pages", "/pages"],
           ].map(([title, url], idx) => (
             <NavLink

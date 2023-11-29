@@ -61,6 +61,11 @@ import teamuser8 from "./teampage2/teamuser8.jpg";
 import teamuser9 from "./teampage2/teamuser9.jpg";
 import facebook from "./logos_facebook.jpg";
 import linkedin from "./Vectorlinked.jpg";
+import contactus from "./contactus.svg";
+import phoneicon from "./phoneicon.svg";
+import locationicon from "./locationicon.svg";
+import postaicon from "./postaicon.svg";
+import arrow from "./arrow.svg";
 
 export const imageData = {
   slider: [slider1, slider2],
@@ -117,4 +122,9 @@ export const imageData = {
   ],
   linkedin,
   facebook,
+  contactus,
+  phoneicon,
+  postaicon,
+  locationicon,
+  arrow,
 };

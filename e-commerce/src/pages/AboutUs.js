@@ -16,7 +16,7 @@ export default function AboutUs() {
         <div className="flex flex-col justify-center items-start text-start gap-5">
           <h4 className="text-xs font-bold">ABOUT COMPANY</h4>
           <h1 className="text-5xl font-bold">ABOUT US</h1>
-          <p className="text-sm w-[60%]">
+          <p className="text-sm w-[60%] font-bold text-gray-400">
             We know how large objects will act, but things on a small scale
           </p>
           <button className="font-bold bg-sky-500 text-white text-xs px-5 py-2 rounded-md">
