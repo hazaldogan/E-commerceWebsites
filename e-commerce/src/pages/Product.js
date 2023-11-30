@@ -1,3 +1,6 @@
+import React from "react";
+import { Slide } from "react-slideshow-image";
+import "react-slideshow-image/dist/styles.css";
 import { data } from "../data";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -11,9 +14,25 @@ import {
 import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 import ProductCard from "../components/ProductCard";
 import Logos from "../components/shop/Logos";
+import { imageData } from "../assets/imageData";
 
 export default function Products() {
   const { id } = useParams();
+  const spanStyle = {
+    padding: "20px",
+    background: "#efefef",
+    color: "#000000",
+  };
+
+  const divStyle = {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundSize: "contain",
+    backgroundPosition: "center",
+    backgroundRepeat: "no-repeat",
+    height: "400px",
+  };
   return (
     <div className="mx-52">
       <div className="flex items-center my-4">
@@ -27,7 +46,19 @@ export default function Products() {
       </div>
       <div className="flex gap-10 justify-center items-center">
         <div className="w-[50%]">
-          <img className="w-full" src={data.productListDetail[id].image} />
+          {/* <img className="w-full" src={data.productListDetail[id].image} /> */}
+          <Slide>
+            {imageData.productslide.map((slideImage, index) => (
+              <div key={index}>
+                <div
+                  style={{
+                    ...divStyle,
+                    backgroundImage: `url(${slideImage})`,
+                  }}
+                ></div>
+              </div>
+            ))}
+          </Slide>
         </div>
         <div className="flex flex-col items-start text-start w-[50%] gap-3">
           <h2 className="font-bold text-lg">

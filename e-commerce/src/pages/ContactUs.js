@@ -114,7 +114,6 @@ export default function ContactUs() {
           Try it free now
         </button>
       </div>
-      <ContactForm />
     </div>
   );
 }

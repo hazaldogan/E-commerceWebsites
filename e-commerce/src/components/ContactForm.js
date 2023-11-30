@@ -40,10 +40,12 @@ export default function App() {
   };
 
   return (
-    <div className="flex flex-wrap gap-10 border border-gray-400 rounded-md p-14 justify-center items-center my-20 ">
-      <form onSubmit={handleSubmit(onFormSubmit)}>
-        <label className="d-block">
-          Adınız:
+    <div className="flex bg-sky-500 justify-center items-center my-20 -mx-52 text-white">
+      <div className="w-[50%]">
+        <h2 className="font-bold text-3xl">CONTACT US</h2>
+      </div>
+      <div className="w-[50%] p-20">
+        <form onSubmit={handleSubmit(onFormSubmit)}>
           <input
             type="text"
             {...register("fullName", {
@@ -54,11 +56,7 @@ export default function App() {
               },
             })}
           />
-        </label>
-        {errors.fullName && <div> {errors.fullName.message} </div>}
-
-        <label className="d-block">
-          Email Adresiniz:
+          {errors.fullName && <div> {errors.fullName.message} </div>}
           <input
             type="email"
             {...register("email", {
@@ -70,10 +68,7 @@ export default function App() {
               },
             })}
           />
-        </label>
-        {errors.email && <div> {errors.email.message} </div>}
-        <label className="d-block">
-          Telefon Numaranız:
+          {errors.email && <div> {errors.email.message} </div>}
           <input
             type="number"
             placeholder="05555555555"
@@ -82,16 +77,13 @@ export default function App() {
               validate: { phoneNumberValidation },
             })}
           />
-        </label>
-        {errors.phoneNumber && <div> {errors.phoneNumber.message} </div>}
-        <label className="d-block">
-          Notunuz:
+          {errors.phoneNumber && <div> {errors.phoneNumber.message} </div>}
           <input type="text" {...register("message")} />
-        </label>
-        <button disabled={!isValid} type="submit">
-          Gönder
-        </button>
-      </form>
+          <button disabled={!isValid} type="submit">
+            Gönder
+          </button>
+        </form>
+      </div>
     </div>
   );
 }

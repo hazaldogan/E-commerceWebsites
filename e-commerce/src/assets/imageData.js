@@ -127,4 +127,5 @@ export const imageData = {
   postaicon,
   locationicon,
   arrow,
+  productslide: [product1, product3],
 };
