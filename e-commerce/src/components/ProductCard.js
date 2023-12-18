@@ -2,7 +2,10 @@ import { Link } from "react-router-dom";
 
 export default function ProductCard({ value, i }) {
   return (
-    <Link className="flex flex-col text-center w-[20%]" to={`/product/${i}`}>
+    <Link
+      className="flex flex-col text-center w-[20%] max-sm:w-full max-sm:justify-center max-sm:items-center"
+      to={`/product/${i}`}
+    >
       <div key={i}>
         <div className="h-4/5 ">
           <img src={value.image} className="max-w-full h-full object-cover" />
