@@ -16,7 +16,7 @@ export default function Footer() {
           <a href="https://www.facebook.com/">
             <FontAwesomeIcon
               icon={faFacebook}
-              size="md"
+              size="lg"
               color="#23A6F0"
               className="p-1"
             />
@@ -24,7 +24,7 @@ export default function Footer() {
           <a href="https://www.instagram.com/">
             <FontAwesomeIcon
               icon={faInstagram}
-              size="md"
+              size="lg"
               color="#23A6F0"
               className="p-1"
             />
@@ -32,7 +32,7 @@ export default function Footer() {
           <a href="https://www.twitter.com/">
             <FontAwesomeIcon
               icon={faTwitter}
-              size="md"
+              size="lg"
               color="#23A6F0"
               className="p-1"
             />

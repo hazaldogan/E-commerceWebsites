@@ -91,7 +91,7 @@ export default function Header() {
             ["About", "/aboutus"],
             ["Blog", "/blog"],
             ["Contact", "/contactus"],
-            ["Pages", "/pages"],
+            ["Pages", "/team"],
           ].map(([title, url], idx) => (
             <NavLink
               to={url}

@@ -34,8 +34,8 @@ export default function Products() {
     height: "400px",
   };
   return (
-    <div className="mx-52">
-      <div className="flex items-center my-4">
+    <div className="mx-52 max-sm:mx-5">
+      <div className="flex items-center my-4 justify-center">
         <h4 className="font-bold text-sm">Home</h4>
         <FontAwesomeIcon
           icon={faChevronRight}
@@ -44,8 +44,8 @@ export default function Products() {
         />
         <h4 className="text-sm text-gray-500 ">Shop</h4>
       </div>
-      <div className="flex gap-10 justify-center items-center">
-        <div className="w-[50%]">
+      <div className="flex gap-10 justify-center items-center max-sm:flex-col">
+        <div className="w-[50%] max-sm:w-full">
           {/* <img className="w-full" src={data.productListDetail[id].image} /> */}
           <Slide>
             {imageData.productslide.map((slideImage, index) => (
@@ -60,7 +60,7 @@ export default function Products() {
             ))}
           </Slide>
         </div>
-        <div className="flex flex-col items-start text-start w-[50%] gap-3">
+        <div className="flex flex-col items-start text-start w-[50%] max-sm:w-full gap-3">
           <h2 className="font-bold text-lg">
             {data.productListDetail[id].name}
           </h2>
@@ -140,11 +140,11 @@ export default function Products() {
           Rewievs <span className="text-emerald-600">(0)</span>
         </h6>
       </div>
-      <div className="flex justify-center items-center gap-10">
-        <div className="w-[25%] flex justify-end">
+      <div className="flex justify-center items-center gap-10 max-sm:flex-col">
+        <div className="w-[25%] max-sm:w-full flex justify-end">
           <img className="w-[100%]" src={data.productListDetail[3].image} />
         </div>
-        <div className="w-[30%] flex flex-col justify-start items-start text-start gap-3 text-sm">
+        <div className="w-[30%] max-sm:w-full flex flex-col justify-start items-start text-start gap-3 text-sm">
           <h4 className="font-bold text-lg">the quick fox jumps over </h4>
           <div className="flex flex-col gap-2">
             <p>
@@ -166,7 +166,7 @@ export default function Products() {
             </p>
           </div>
         </div>
-        <div className="w-[30%] flex flex-col justify-center items-start text-start gap-2">
+        <div className="w-[30%] max-sm:w-full flex flex-col justify-center items-start text-start gap-2">
           <div className="flex flex-col gap-3">
             <h4 className="font-bold text-lg">the quick fox jumps over </h4>
             <div className="flex flex-col gap-1">
@@ -236,7 +236,7 @@ export default function Products() {
         </div>
       </div>
       <div className="my-20">
-        <h2 className="font-bold text-xl text-start mx-16">
+        <h2 className="font-bold text-xl text-start max-sm:text-center mx-16 max-sm:mx-5">
           BESTSELLER PRODUCTS
         </h2>
         <div className="flex flex-wrap justify-center items-center gap-7 mt-10">

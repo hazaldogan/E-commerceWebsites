@@ -23,18 +23,18 @@ export default function Team() {
           <h4 className="text-sm text-gray-500 ">Shop</h4>
         </div>
       </div>
-      <div className="w-full flex justify-center gap-2">
-        <div className="w-[50%]">
+      <div className="w-full flex max-sm:flex-col justify-center gap-2">
+        <div className="w-[50%] max-sm:w-full">
           <img className="w-full" src={imageData.teampage[0]} />
         </div>
-        <div className="flex flex-wrap gap-2 w-[50%]">
+        <div className="flex flex-wrap gap-2 w-[50%] max-sm:w-full items-center justify-center">
           <img src={imageData.teampage[1]} />
           <img src={imageData.teampage[2]} />
           <img src={imageData.teampage[3]} />
           <img src={imageData.teampage[4]} />
         </div>
       </div>
-      <div className="my-20 mx-52">
+      <div className="my-20 mx-52 max-sm:mx-5">
         <h2 className="font-bold text-3xl">Meet Our Team</h2>
         <div className="flex gap-7 flex-wrap my-20 justify-center items-center">
           {imageData.teamusers.map((img, i) => (
@@ -72,9 +72,9 @@ export default function Team() {
           ))}
         </div>
       </div>
-      <div className="flex flex-col justify-center items-center gap-6">
+      <div className="flex flex-col justify-center items-center gap-6 max-sm:mx-5">
         <h2 className="font-bold text-4xl">Start your 14 days free trial</h2>
-        <p className="text-sm text-gray-400 font-bold w-[400px]">
+        <p className="text-sm text-gray-400 font-bold w-[400px] max-sm:w-full">
           Met minim Mollie non desert Alamo est sit cliquey dolor do met sent.
           RELIT official consequent.
         </p>

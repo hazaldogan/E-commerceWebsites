@@ -7,8 +7,8 @@ import ProductCard from "../ProductCard";
 export default function ProductListDetails() {
   return (
     <div>
-      <div className="flex justify-around items-center mx-20 my-5">
-        <p className="text-sm font-bold text-gray-500">
+      <div className="flex max-sm:flex-col justify-around items-center mx-20 my-5 max-sm:gap-4">
+        <p className="text-sm max-sm:text-xs font-bold text-gray-500">
           Showing all 12 results
         </p>
         <div className="flex gap-4 items-center">
