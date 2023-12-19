@@ -5,10 +5,10 @@ import Main from "./layouts/Main";
 
 function App() {
   return (
-    <div className="App max-sm:max-w-sm">
+    <div className="App">
       <Header />
-      <Main />
-      <Footer />
+      {/* <Main /> */}
+      {/* <Footer /> */}
     </div>
   );
 }

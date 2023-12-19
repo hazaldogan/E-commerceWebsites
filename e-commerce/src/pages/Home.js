@@ -8,10 +8,10 @@ import FeaturedPosts from "../components/home/FeaturedPosts";
 export default function Home() {
   return (
     <>
-      <Slider />
+      {/* <Slider /> */}
       <CategoryList />
       <BestsellerProducts />
-      <SliderProducts />
+      {/* <SliderProducts /> */}
       <PopularProduct />
       <FeaturedPosts />
     </>

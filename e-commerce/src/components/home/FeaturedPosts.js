@@ -19,7 +19,7 @@ export default function FeaturedPosts() {
           of Classical physics: Newtonian mechanics
         </p>
       </div>
-      <div className="flex flex-wrap justify-center items-center gap-7 w-[90%]">
+      <div className="flex flex-wrap max-sm:flex-col justify-center items-center gap-7 w-[90%]">
         {data.featuredPosts.map((value, i) => (
           <div key={i} className="flex flex-col border basis-[30%]">
             <div className="relative">
