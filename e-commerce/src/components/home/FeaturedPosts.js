@@ -51,10 +51,10 @@ export default function FeaturedPosts() {
                   {value.description}
                 </p>
               </div>
-              <div className="flex justify-between">
+              <div className="flex justify-between ">
                 <div className="flex items-center">
                   <FontAwesomeIcon icon={faClock} size="sm" className="p-1" />
-                  <p className="text-neutral-500 text-xs ">{value.date}</p>
+                  <p className="text-neutral-500 text-xs">{value.date}</p>
                 </div>
                 <div className="flex items-center">
                   <FontAwesomeIcon

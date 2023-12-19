@@ -31,9 +31,11 @@ export default function ProductListDetails() {
           </button>
         </div>
       </div>
-      <div className="flex flex-wrap justify-center items-center gap-7 mr-20 ml-24">
+      <div className="flex flex-wrap justify-center items-center gap-7 mr-20 ml-24 max-sm:m-0 max-sm:flex-col">
         {data.productListDetail.map((value, i) => (
-          <ProductCard value={value} i={i} />
+          <div key={i}>
+            <ProductCard value={value} i={i} />
+          </div>
         ))}
       </div>
     </div>

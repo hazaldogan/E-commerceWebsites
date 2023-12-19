@@ -14,7 +14,7 @@ import {
   faTwitter,
   faYoutube,
 } from "@fortawesome/free-brands-svg-icons";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { useState } from "react";
 
 export default function Header() {
@@ -60,7 +60,7 @@ export default function Header() {
           </div>
         </div>
       </div>
-      <div className="flex justify-between items-center flex-wrap px-10 max-sm:px-0 max-sm:flex-col">
+      <div className="flex justify-between items-center flex-wrap px-10 max-sm:px-0">
         <header className="flex justify-between items-center max-sm:w-full max-sm:px-5 max-sm:pt-5 max-sm:pb-0">
           <h3 className="text-2xl max-sm:text-sm text-slate-800 font-bold cursor-pointer">
             Bandage
@@ -96,7 +96,7 @@ export default function Header() {
             <NavLink
               to={url}
               key={idx}
-              className=" text-neutral-500 font-bold text-sm hover:text-slate-900 max-sm:text-sm "
+              className=" text-neutral-500 font-bold text-sm hover:text-slate-900 max-sm:text-sm no-underline"
             >
               {title}
             </NavLink>

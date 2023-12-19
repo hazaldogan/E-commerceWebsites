@@ -18,11 +18,6 @@ import { imageData } from "../assets/imageData";
 
 export default function Products() {
   const { id } = useParams();
-  const spanStyle = {
-    padding: "20px",
-    background: "#efefef",
-    color: "#000000",
-  };
 
   const divStyle = {
     display: "flex",
@@ -67,27 +62,27 @@ export default function Products() {
           <div className="flex items-center gap-1">
             <FontAwesomeIcon
               icon={faStar}
-              size="md"
+              size="sm"
               className="text-amber-300"
             />
             <FontAwesomeIcon
               icon={faStar}
-              size="md"
+              size="sm"
               className="text-amber-300"
             />
             <FontAwesomeIcon
               icon={faStar}
-              size="md"
+              size="sm"
               className="text-amber-300"
             />
             <FontAwesomeIcon
               icon={faStar}
-              size="md"
+              size="sm"
               className="text-amber-300"
             />
             <FontAwesomeIcon
               icon={faStarHalfAlt}
-              size="md"
+              size="sm"
               className="text-amber-300"
             />
             <p className="text-sm font-bold text-gray-500">10 reviews</p>

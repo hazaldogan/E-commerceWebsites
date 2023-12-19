@@ -39,10 +39,10 @@ export default function Footer() {
           </a>
         </div>
       </div>
-      <div className="flex text-start justify-between mt-8 text-sm max-sm:text-xs  max-sm:flex-col max-sm:gap-5 ">
+      <div className="flex text-start justify-between mt-8 text-sm max-sm:text-xs  max-sm:flex-col max-sm:gap-5">
         <div className="flex flex-col gap-4">
           <h2 className="font-bold">Company Info</h2>
-          <div className="flex flex-col gap-1.5">
+          <div className="flex flex-col gap-1.5 ">
             <a href="#">About Us</a>
             <a href="#">Carrier</a>
             <a href="#">We are hiring</a>
