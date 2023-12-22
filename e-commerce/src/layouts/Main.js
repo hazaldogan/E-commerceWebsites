@@ -5,6 +5,7 @@ import { Switch, Route } from "react-router-dom";
 import AboutUs from "../pages/AboutUs";
 import Team from "../pages/Team";
 import ContactUs from "../pages/ContactUs";
+import Signup from "../pages/Signup";
 
 export default function Main() {
   return (
@@ -27,6 +28,9 @@ export default function Main() {
         </Route>
         <Route exact path="/contactus">
           <ContactUs />
+        </Route>
+        <Route exact path="/signup">
+          <Signup />
         </Route>
       </Switch>
     </div>

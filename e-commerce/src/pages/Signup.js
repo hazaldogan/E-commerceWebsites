@@ -121,8 +121,8 @@ export default function Signup() {
           <div>
             <input
               type="text"
-              placeholder="Store Tax ID"
-              {...register("Store Tax ID", { pattern: TXXXXVXXXXXX })}
+              placeholder="TXXXXVXXXXXX"
+              {...register("Store Tax ID", {})}
             />
           </div>
           <div>
@@ -132,9 +132,11 @@ export default function Signup() {
               {...register("Store Bank Account", {})}
             />
           </div>
-
-          <input disabled={!isValid} type="submit" />
         </div>
+
+        <button disabled={!isValid} type="submit">
+          Gönder
+        </button>
       </form>
     </div>
   );
