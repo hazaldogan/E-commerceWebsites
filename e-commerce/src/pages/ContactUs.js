@@ -14,7 +14,7 @@ export default function ContactUs() {
       <div className="flex max-sm:flex-col justify-center items-center">
         <div className="flex flex-col justify-center items-start text-start max-sm:items-center max-sm:text-center gap-7 w-[50%] max-sm:w-[70%]">
           <h4 className="text-xs font-bold">CONTACT US</h4>
-          <h1 className="text-6xl max-sm:text-4xl font-bold">
+          <h1 className="text-6xl max-sm:text-4xl font-bold max-sm:text-center">
             Get in touch today!
           </h1>
           <p className="text-sm w-[60%] max-sm:w-full font-bold text-gray-400">
