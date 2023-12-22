@@ -7,7 +7,7 @@ import {
   CarouselIndicators,
 } from "reactstrap";
 
-export default function HeroBot() {
+export default function SliderProduct() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [animating, setAnimating] = useState(false);
 
