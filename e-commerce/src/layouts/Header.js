@@ -63,9 +63,11 @@ export default function Header() {
       </div>
       <div className="flex justify-between items-center flex-wrap px-10 max-sm:px-0">
         <header className="flex justify-between items-center max-sm:w-full max-sm:px-5 max-sm:pt-5 max-sm:pb-0">
-          <h3 className="text-2xl max-sm:text-sm text-slate-800 font-bold cursor-pointer">
-            Bandage
-          </h3>
+          <Link className="no-underline" to="/">
+            <h3 className="text-2xl max-sm:text-sm text-slate-800 font-bold">
+              Bandage
+            </h3>
+          </Link>
           <div className="flex flex-row gap-5">
             <FontAwesomeIcon
               icon={faCartShopping}

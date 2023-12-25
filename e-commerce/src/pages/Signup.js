@@ -28,7 +28,6 @@ export default function Signup() {
   }, []);
 
   const onSubmit = (data) => {
-    console.log(data);
     if (data.role == "customer" || data.role == "admin") {
       setFormData({
         name: data.fullName,
@@ -59,7 +58,7 @@ export default function Signup() {
         .post("https://workintech-fe-ecommerce.onrender.com/signup", formData)
         .then((res) => {
           console.log(res);
-          history.goBack();
+          history.push("/");
         })
         .catch((err) => {
           console.log(err);
@@ -271,11 +270,6 @@ export default function Signup() {
                           value: true,
                           message: "Store phone is required!",
                         },
-                        pattern: {
-                          value:
-                            /^((\+|00)90|0)?\s?5\d{2}\s?\d{3}\s?\d{2}\s?\d{2}$/,
-                          message: "Please enter valid phone number!",
-                        },
                       })}
                     />
                     {errors.storePhone && (
@@ -347,7 +341,7 @@ export default function Signup() {
               )}
 
               <button
-                className="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+                className="w-full text-white bg-sky-500 font-bold hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 rounded-lg text-sm px-5 py-2.5 text-center"
                 disabled={!isValid}
                 type="submit"
               >
