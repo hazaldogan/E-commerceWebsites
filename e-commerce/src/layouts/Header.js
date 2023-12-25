@@ -16,6 +16,7 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
+import { Link } from "react-router-dom/cjs/react-router-dom.min";
 
 export default function Header() {
   const [isActive, setIsActive] = useState(false);
@@ -104,8 +105,12 @@ export default function Header() {
         </nav>
         <div className=" text-sky-500 items-center flex gap-10 max-sm:hidden">
           <div className="items-center flex">
-            <FontAwesomeIcon icon={faUser} size="sm" className="" />
-            <div className=" font-bold text-sm">Login / Register</div>
+            <FontAwesomeIcon icon={faUser} size="sm" />
+            <div className=" font-bold text-sm">
+              <Link className="no-underline text-sky-500" to="/signup">
+                Login / Register
+              </Link>
+            </div>
           </div>
           <div className="items-center flex">
             <FontAwesomeIcon icon={faSearch} size="sm" className="p-4" />
