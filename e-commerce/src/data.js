@@ -370,4 +370,21 @@ export const data = {
       ],
     },
   ],
+  aboutteam: [
+    {
+      image: imageData.aboutteam[0],
+      username: "Username",
+      position: "Profession",
+    },
+    {
+      image: imageData.aboutteam[1],
+      username: "Username",
+      position: "Profession",
+    },
+    {
+      image: imageData.aboutteam[2],
+      username: "Username",
+      position: "Profession",
+    },
+  ],
 };

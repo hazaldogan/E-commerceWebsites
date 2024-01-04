@@ -6,6 +6,7 @@ import {
   faSearch,
   faCartShopping,
   faHeart,
+  faBars,
 } from "@fortawesome/free-solid-svg-icons";
 import {
   faFacebook,
@@ -14,11 +15,19 @@ import {
   faYoutube,
 } from "@fortawesome/free-brands-svg-icons";
 import { NavLink } from "react-router-dom";
+import { useState } from "react";
+import { Link } from "react-router-dom/cjs/react-router-dom.min";
 
 export default function Header() {
+  const [isActive, setIsActive] = useState(false);
+
+  function clickHandler() {
+    isActive ? setIsActive(false) : setIsActive(true);
+  }
+
   return (
     <div>
-      <div className="bg-[#252B42] text-center items-center justify-between gap-5 flex-wrap flex px-6">
+      <div className="bg-[#252B42] text-center items-center justify-between gap-5 flex-wrap flex px-6 max-sm:hidden">
         <div className="flex flex-wrap">
           <div className="text-white items-center  p-2.5 gap-[5px] flex">
             <FontAwesomeIcon icon={faPhone} size="sm" />
@@ -52,32 +61,58 @@ export default function Header() {
           </div>
         </div>
       </div>
-      <div className="flex justify-between items-center flex-wrap px-10">
-        <header>
-          <h3 className="text-2xl text-slate-800 font-bold ">Bandage</h3>
+      <div className="flex justify-between items-center flex-wrap px-10 max-sm:px-0">
+        <header className="flex justify-between items-center max-sm:w-full max-sm:px-5 max-sm:pt-5 max-sm:pb-0">
+          <Link className="no-underline" to="/">
+            <h3 className="text-2xl max-sm:text-sm text-slate-800 font-bold">
+              Bandage
+            </h3>
+          </Link>
+          <div className="flex flex-row gap-5">
+            <FontAwesomeIcon
+              icon={faCartShopping}
+              size="sm"
+              className="hidden max-sm:block"
+            />
+            <FontAwesomeIcon
+              icon={faSearch}
+              size="sm"
+              className="hidden max-sm:block"
+            />
+            <FontAwesomeIcon
+              icon={faBars}
+              size="sm"
+              className="hidden max-sm:block"
+              onClick={clickHandler}
+            />
+          </div>
         </header>
-        <nav className="justify-start items-start gap-4 flex ">
+        <nav className="justify-start items-start gap-4 flex max-sm:flex-col max-sm:w-full max-sm:justify-center max-sm:items-center max-sm:gap-5 max-sm:py-8">
           {[
             ["Home", "/"],
             ["Shop", "/product-list"],
-            ["About", "/about"],
+            ["About", "/aboutus"],
             ["Blog", "/blog"],
-            ["Contact", "/contact"],
-            ["Pages", "/pages"],
+            ["Contact", "/contactus"],
+            ["Pages", "/team"],
           ].map(([title, url], idx) => (
             <NavLink
               to={url}
               key={idx}
-              className=" text-neutral-500 font-bold text-sm hover:text-slate-900"
+              className=" text-neutral-500 font-bold text-sm hover:text-slate-900 max-sm:text-sm no-underline"
             >
               {title}
             </NavLink>
           ))}
         </nav>
-        <div className=" text-sky-500 items-center flex gap-10">
-          <div className="items-center flex ">
-            <FontAwesomeIcon icon={faUser} size="sm" className="" />
-            <div className=" font-bold text-sm">Login / Register</div>
+        <div className=" text-sky-500 items-center flex gap-10 max-sm:hidden">
+          <div className="items-center flex">
+            <FontAwesomeIcon icon={faUser} size="sm" />
+            <div className=" font-bold text-sm">
+              <Link className="no-underline text-sky-500" to="/signup">
+                Login / Register
+              </Link>
+            </div>
           </div>
           <div className="items-center flex">
             <FontAwesomeIcon icon={faSearch} size="sm" className="p-4" />

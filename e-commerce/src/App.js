@@ -5,7 +5,7 @@ import Main from "./layouts/Main";
 
 function App() {
   return (
-    <div className="App">
+    <div className="App max-sm:max-w-xs no-underline	">
       <Header />
       <Main />
       <Footer />

@@ -1,4 +1,5 @@
 import { data } from "../../data";
+import ProductCard from "../ProductCard";
 
 export default function BestsellerProducts() {
   return (
@@ -16,35 +17,7 @@ export default function BestsellerProducts() {
       </div>
       <div className="flex flex-wrap justify-center items-center gap-7">
         {data.bestsellers.map((value, i) => (
-          <div key={i} className="flex flex-col text-center w-[20%]">
-            <div className="h-4/5 ">
-              <img
-                src={value.image}
-                className="max-w-full h-full object-cover"
-              />
-            </div>
-            <div className="p-6 flex-col gap-2">
-              <h5 className="text-slate-800 text-base font-bold ">
-                {value.name}
-              </h5>
-              <h5 className="text-neutral-400 text-sm font-bold ">
-                {value.description}
-              </h5>
-              <div className="flex gap-1 justify-center">
-                <h5 className="text-stone-300 text-base font-bold ">
-                  {value.price}
-                </h5>
-                <h5 className="text-teal-700 text-base font-bold">
-                  {value.discountPrice}
-                </h5>
-              </div>
-              <div className="w-20 h-4 justify-start items-center gap-1.5 inline-flex">
-                {value.colors.map((color, i) => (
-                  <div key={i} className={color} />
-                ))}
-              </div>
-            </div>
-          </div>
+          <ProductCard value={value} i={i} />
         ))}
       </div>
     </div>

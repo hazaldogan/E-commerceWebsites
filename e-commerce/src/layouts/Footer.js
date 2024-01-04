@@ -7,12 +7,12 @@ import {
 
 export default function Footer() {
   return (
-    <div className="mx-52 my-10">
-      <div className="flex justify-between items-center text-center">
-        <h2 className="text-2xl text-slate-800 font-bold leading-loose tracking-tight">
+    <div className="mx-52 my-10 max-sm:mx-6">
+      <div className="flex justify-between items-center text-center max-sm:block max-sm:text-start">
+        <h2 className="text-2xl max-sm:text-sm text-slate-800 font-bold ">
           Bandage
         </h2>
-        <div className="flex gap-4">
+        <div className="flex gap-4 max-sm:gap-2 max-sm:pt-3">
           <a href="https://www.facebook.com/">
             <FontAwesomeIcon
               icon={faFacebook}
@@ -39,10 +39,10 @@ export default function Footer() {
           </a>
         </div>
       </div>
-      <div className="flex text-start justify-between mt-8 text-sm">
+      <div className="flex text-start justify-between mt-8 text-sm max-sm:text-xs  max-sm:flex-col max-sm:gap-5">
         <div className="flex flex-col gap-4">
           <h2 className="font-bold">Company Info</h2>
-          <div className="flex flex-col gap-1.5">
+          <div className="flex flex-col gap-1.5 ">
             <a href="#">About Us</a>
             <a href="#">Carrier</a>
             <a href="#">We are hiring</a>
@@ -76,12 +76,12 @@ export default function Footer() {
             <a href="#">Blog</a>
           </div>
         </div>
-        <div className="flex flex-col gap-4">
-          <h5 className="text-slate-800 text-base font-bold leading-normal tracking-tight">
+        <div className="flex flex-col gap-4 max-sm:gap-2">
+          <h5 className="text-slate-800 text-base font-bold  max-sm:text-sm">
             Get in Touch
           </h5>
           <div className="flex flex-col items-start">
-            <div className="flex items-center">
+            <div className="flex items-center ">
               <input
                 type="text"
                 placeholder="Your Email"
@@ -96,7 +96,7 @@ export default function Footer() {
         </div>
       </div>
       <div className="mt-14 flex items-center">
-        <p className="text-neutral-500 text-sm font-bold">
+        <p className="text-neutral-500 text-sm  max-sm:text-xs font-bold">
           Made With Love By Finland All Right Reserved
         </p>
       </div>
