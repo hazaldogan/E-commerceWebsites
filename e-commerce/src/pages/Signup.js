@@ -28,14 +28,7 @@ export default function Signup() {
   }, []);
 
   const onSubmit = (data) => {
-    if (data.role == "customer" || data.role == "admin") {
-      setFormData({
-        name: data.fullName,
-        email: data.email,
-        password: data.password,
-        role_id: data.role === "customer" ? 2 : 0,
-      });
-    } else {
+    if (data.role == "store") {
       setFormData({
         name: data.fullName,
         email: data.email,
@@ -48,17 +41,24 @@ export default function Signup() {
           bank_account: data.storeBank,
         },
       });
+    } else {
+      setFormData({
+        name: data.fullName,
+        email: data.email,
+        password: data.password,
+        role_id: data.role === "customer" ? 2 : 0,
+      });
     }
   };
 
   useEffect(() => {
     console.log(formData);
-    if (formData.length > 0) {
+    if (Object.keys(formData).length > 0) {
       axios
         .post("https://workintech-fe-ecommerce.onrender.com/signup", formData)
         .then((res) => {
           console.log(res);
-          history.push("/");
+          history.goBack();
         })
         .catch((err) => {
           console.log(err);
@@ -202,23 +202,17 @@ export default function Signup() {
                   id="role"
                   {...register("role")}
                 >
+                  <option selected value="customer">
+                    Customer
+                  </option>
                   {roles.map((role) => {
-                    if (role.code === "customer")
-                      return (
-                        <option selected value="customer">
-                          Customer
-                        </option>
-                      );
-                    else {
+                    if (role.code !== "customer")
                       return (
                         <option value={role.code}>
                           {role.code[0].toUpperCase() + role.code.slice(1)}
                         </option>
                       );
-                    }
                   })}
-                  <option value="customer">Customer</option>
-                  <option value="admin">Admin</option>
                 </select>
               </div>
               {selectedRole === "store" && (
