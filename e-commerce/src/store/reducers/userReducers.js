@@ -2,7 +2,7 @@ import { USER_ERROR, USER_LOGOUT, USER_SUCCESS } from "../actions/userActions";
 
 const initialState = {
   user: {},
-  error: null,
+  error: "",
 };
 
 export const userReducer = (state = initialState, action) => {
@@ -15,7 +15,7 @@ export const userReducer = (state = initialState, action) => {
     case USER_LOGOUT:
       return {
         user: {},
-        error: null,
+        error: "",
       };
     case USER_SUCCESS:
       return {
