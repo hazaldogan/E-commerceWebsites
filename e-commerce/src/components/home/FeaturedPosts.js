@@ -6,7 +6,9 @@ import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 
 export default function FeaturedPosts() {
   return (
+
     <div className="pt-24 gap-20 flex-col flex justify-center items-center max-sm:pt-12">
+
       <div className="text-center flex flex-col gap-5">
         <h6 className="text-sky-500 text-sm font-bold max-sm:text-xs">
           Practice Advice
