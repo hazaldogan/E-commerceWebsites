@@ -7,21 +7,21 @@ export const USER_LOGOUT = "USER LOGOUT";
 
 export const userSuccess = (res) => {
   return {
-    type: types.USER_SUCCESS,
+    type: USER_SUCCESS,
     payload: res,
   };
 };
 
 export const userError = (message) => {
   return {
-    type: types.USER_ERROR,
+    type: USER_ERROR,
     payload: message,
   };
 };
 
 export const userLogout = () => {
   return {
-    type: types.USER_LOGOUT,
+    type: USER_LOGOUT,
   };
 };
 
@@ -38,7 +38,6 @@ export const signUp = (data, history) => (dispatch) => {
         draggable: true,
         progress: undefined,
         theme: "light",
-        transition: Bounce,
       });
       history.push("/");
     })
@@ -53,7 +52,6 @@ export const signUp = (data, history) => (dispatch) => {
         draggable: true,
         progress: undefined,
         theme: "light",
-        transition: Bounce,
       });
     });
 };
@@ -71,7 +69,6 @@ export const login = (data, history) => (dispatch) => {
         draggable: true,
         progress: undefined,
         theme: "light",
-        transition: Bounce,
       });
       history.push("/");
     })
@@ -86,7 +83,6 @@ export const login = (data, history) => (dispatch) => {
         draggable: true,
         progress: undefined,
         theme: "light",
-        transition: Bounce,
       });
     });
 };
@@ -102,7 +98,6 @@ export const logout = (history) => (dispatch) => {
     draggable: true,
     progress: undefined,
     theme: "light",
-    transition: Bounce,
   });
   history.push("/");
 };

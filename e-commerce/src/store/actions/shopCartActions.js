@@ -63,7 +63,6 @@ export const addAdress = (address) => {
         draggable: true,
         progress: undefined,
         theme: "light",
-        transition: Bounce,
       });
     })
     .catch((err) => {
@@ -77,7 +76,6 @@ export const addAdress = (address) => {
         draggable: true,
         progress: undefined,
         theme: "light",
-        transition: Bounce,
       });
     });
 };
