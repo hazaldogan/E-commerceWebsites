@@ -17,9 +17,12 @@ import {
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
+import { useSelector } from "react-redux";
+import Gravatar from "react-gravatar";
 
 export default function Header() {
   const [isActive, setIsActive] = useState(false);
+  const user = useSelector((state) => state.userReducer.user);
 
   function clickHandler() {
     isActive ? setIsActive(false) : setIsActive(true);
@@ -106,14 +109,27 @@ export default function Header() {
           ))}
         </nav>
         <div className=" text-sky-500 items-center flex gap-10 max-sm:hidden">
-          <div className="items-center flex">
-            <FontAwesomeIcon icon={faUser} size="sm" />
-            <div className=" font-bold text-sm">
-              <Link className="no-underline text-sky-500" to="/signup">
-                Login / Register
-              </Link>
+          {Object.keys(user).length < 1 ? (
+            <div className="items-center flex">
+              <FontAwesomeIcon icon={faUser} size="sm" />
+              <div className=" font-bold text-sm">
+                <Link className="no-underline text-sky-500" to="/login">
+                  Login{" "}
+                </Link>{" "}
+                /{" "}
+                <Link className="no-underline text-sky-500" to="/signup">
+                  Register
+                </Link>
+              </div>
             </div>
-          </div>
+          ) : (
+            <div className="items-center flex text-sky-500 font-bold">
+              <div className="h-10 w-10">
+                <Gravatar className="rounded-full" email={user.email} />
+              </div>
+              {user.name}
+            </div>
+          )}
           <div className="items-center flex">
             <FontAwesomeIcon icon={faSearch} size="sm" className="p-4" />
             <div className=" flex items-center p-4">

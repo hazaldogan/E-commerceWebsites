@@ -6,6 +6,7 @@ import AboutUs from "../pages/AboutUs";
 import Team from "../pages/Team";
 import ContactUs from "../pages/ContactUs";
 import Signup from "../pages/Signup";
+import Login from "../pages/Login";
 
 export default function Main() {
   return (
@@ -31,6 +32,9 @@ export default function Main() {
         </Route>
         <Route exact path="/signup">
           <Signup />
+        </Route>
+        <Route exact path="/login">
+          <Login />
         </Route>
       </Switch>
     </div>
