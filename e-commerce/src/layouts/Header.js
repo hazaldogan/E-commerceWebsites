@@ -123,7 +123,7 @@ export default function Header() {
               </div>
             </div>
           ) : (
-            <div className="items-center flex text-sky-500 font-bold">
+            <div className="items-center flex text-sky-500 font-bold gap-2">
               <div className="h-10 w-10">
                 <Gravatar className="rounded-full" email={user.email} />
               </div>
