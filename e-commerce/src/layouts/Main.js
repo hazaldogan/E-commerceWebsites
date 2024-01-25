@@ -15,7 +15,7 @@ export default function Main() {
         <Route exact path="/">
           <Home />
         </Route>
-        <Route exact path="/product-list">
+        <Route exact path="/shopping/:gender?/:category?">
           <ProductList />
         </Route>
         <Route exact path="/product/:id">

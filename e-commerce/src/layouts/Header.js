@@ -7,6 +7,7 @@ import {
   faCartShopping,
   faHeart,
   faBars,
+  faAngleDown,
 } from "@fortawesome/free-solid-svg-icons";
 import {
   faFacebook,
@@ -23,6 +24,13 @@ import Gravatar from "react-gravatar";
 export default function Header() {
   const [isActive, setIsActive] = useState(false);
   const user = useSelector((state) => state.userReducer.user);
+  const categories = useSelector((store) => store.globalReducer.categories);
+  const womanCategories = categories.filter(
+    (category) => category.gender === "k"
+  );
+  const manCategories = categories.filter(
+    (category) => category.gender === "e"
+  );
 
   function clickHandler() {
     isActive ? setIsActive(false) : setIsActive(true);
@@ -93,20 +101,88 @@ export default function Header() {
         <nav className="justify-start items-start gap-4 flex max-sm:flex-col max-sm:w-full max-sm:justify-center max-sm:items-center max-sm:gap-5 max-sm:py-8">
           {[
             ["Home", "/"],
-            ["Shop", "/product-list"],
+            ["Shop", "/shopping"],
             ["About", "/aboutus"],
             ["Blog", "/blog"],
             ["Contact", "/contactus"],
             ["Pages", "/team"],
-          ].map(([title, url], idx) => (
-            <NavLink
-              to={url}
-              key={idx}
-              className=" text-neutral-500 font-bold text-sm hover:text-slate-900 max-sm:text-sm no-underline"
-            >
-              {title}
-            </NavLink>
-          ))}
+          ].map(([title, url], idx) =>
+            title === "Shop" ? (
+              <div className="dropdown dropdown-hover">
+                <label
+                  tabIndex={0}
+                  className="text-neutral-500 font-bold text-sm max-sm:text-sm max-sm:font-bold hover:text-slate-900"
+                >
+                  <Link
+                    to="/shopping"
+                    className="no-underline text-neutral-500"
+                  >
+                    Shop
+                  </Link>
+                  <FontAwesomeIcon
+                    icon={faAngleDown}
+                    className="text-neutral-500 font-bold text-sm pl-2"
+                  />
+                </label>
+                <div tabIndex={0} className="dropdown-content z-[1] menu">
+                  <div className="p-2 shadow bg-white flex rounded-box gap-4 divide-x-[12px]">
+                    <ul>
+                      <li className="font-bold text-gray-800">
+                        <Link
+                          to="/shopping/kadin"
+                          className="no-underline text-neutral-500"
+                        >
+                          Women
+                        </Link>
+                      </li>
+                      {womanCategories.map((category, idx) => {
+                        return (
+                          <li key={idx}>
+                            <Link
+                              to={`/shopping/kadin/${category.code.slice(2)}`}
+                              className="no-underline text-gray-500"
+                            >
+                              {category.title}
+                            </Link>
+                          </li>
+                        );
+                      })}
+                    </ul>
+                    <ul>
+                      <li className="font-bold text-gray-800">
+                        <Link
+                          to="/shopping/erkek"
+                          className="no-underline text-neutral-500"
+                        >
+                          Men
+                        </Link>
+                      </li>
+                      {manCategories.map((category, idx) => {
+                        return (
+                          <li key={idx}>
+                            <Link
+                              to={`/shopping/erkek/${category.code.slice(2)}`}
+                              className="no-underline text-gray-500"
+                            >
+                              {category.title}
+                            </Link>
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            ) : (
+              <NavLink
+                to={url}
+                key={idx}
+                className=" text-neutral-500 font-bold text-sm hover:text-slate-900 max-sm:text-sm no-underline"
+              >
+                {title}
+              </NavLink>
+            )
+          )}
         </nav>
         <div className=" text-sky-500 items-center flex gap-10 max-sm:hidden">
           {Object.keys(user).length < 1 ? (

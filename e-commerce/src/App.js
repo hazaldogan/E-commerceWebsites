@@ -7,6 +7,7 @@ import { useEffect } from "react";
 import axiosWithAuth from "./api/axiosWithAuth";
 import { useDispatch, useSelector } from "react-redux";
 import { userSuccess } from "./store/actions/userActions";
+import { categoriesSuccess } from "./store/actions/globalActions";
 
 function App() {
   const [token, setToken] = useLocalStorage("token", "");
@@ -14,6 +15,7 @@ function App() {
   let isLoggedIn = useSelector(
     (store) => store.userReducer.user
   ).hasOwnProperty("token");
+
   useEffect(() => {
     if (token) {
       axiosWithAuth()
@@ -28,6 +30,11 @@ function App() {
         });
     }
   }, [isLoggedIn]);
+
+  useEffect(() => {
+    dispatch(categoriesSuccess());
+  }, []);
+
   return (
     <div className="App max-sm:max-w-xs no-underline	">
       <Header />

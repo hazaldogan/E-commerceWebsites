@@ -4,8 +4,31 @@ import { data } from "../data";
 import ProductListDetails from "../components/shop/ProductListDetail";
 import Logos from "../components/shop/Logos";
 import Pagination from "../components/Pagination";
+import { useEffect } from "react";
+import { useSelector } from "react-redux";
 
 export default function ProductList() {
+  const categories = useSelector((store) => store.globalReducer.categories);
+
+  const sortedCategories = categories
+    .sort((a, b) => {
+      return b.rating - a.rating;
+    })
+    .slice(0, 5)
+    .map((value, i) => {
+      return (
+        <div
+          key={i}
+          className="flex justify-center items-center relative max-sm:text-xs w-[100%]"
+        >
+          <img className="object-cover h-[75%]" src={value.img} />
+          <div className="absolute text-white">
+            <h4 className="font-bold">{value.title}</h4>
+          </div>
+        </div>
+      );
+    });
+
   return (
     <div className="mx-12">
       <div className="flex max-sm:flex-col max-sm:gap-5 max-sm:pb-5 justify-around h-14 items-center my-4">
@@ -21,18 +44,7 @@ export default function ProductList() {
         </div>
       </div>
       <div className="flex max-sm:flex-col gap-3 justify-center">
-        {data.productcategories.map((value, i) => (
-          <div
-            key={i}
-            className="flex justify-center items-center relative max-sm:text-xs"
-          >
-            <img className="object-cover" src={value.image} />
-            <div className="absolute text-white">
-              <h4 className="font-bold">{value.title}</h4>
-              <p>{value.items}</p>
-            </div>
-          </div>
-        ))}
+        {sortedCategories}
       </div>
       <ProductListDetails />
       <Logos />

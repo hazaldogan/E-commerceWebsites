@@ -22,13 +22,23 @@ export const rolesSuccess = () => (dispatch) => {
     });
 };
 
-export const changeCategories = () => (dispatch) => {
-  API.get("/categories").then((res) => {
-    dispatch({ type: CHANGE_CATEGORIES, payload: res.data }).catch((err) => {
+export const changeCategories = (categories) => {
+  return {
+    type: CHANGE_CATEGORIES,
+    payload: categories,
+  };
+};
+
+export const categoriesSuccess = () => (dispatch) => {
+  API.get("/categories")
+    .then((res) => {
+      dispatch(changeCategories(res.data));
+    })
+    .catch((err) => {
       console.log(err);
     });
-  });
 };
+
 export const changeTheme = (theme) => {
   return {
     type: CHANGE_THEME,
