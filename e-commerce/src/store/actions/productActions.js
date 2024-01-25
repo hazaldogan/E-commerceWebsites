@@ -25,7 +25,7 @@ export const fetchLoading = () => {
   };
 };
 
-export const fetchAnother = (data) => (dispatch) => {
+export const fetchProduct = (data) => (dispatch) => {
   dispatch(fetchLoading());
   toast.loading("Please wait...", {
     autoClose: 2000,
