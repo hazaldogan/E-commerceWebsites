@@ -3,8 +3,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGrip, faList } from "@fortawesome/free-solid-svg-icons";
 import DropdownMenu from "../DropdownMenu";
 import ProductCard from "../ProductCard";
+import { useSelector } from "react-redux";
+import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 
 export default function ProductListDetails() {
+  const categories = useSelector((store) => store.globalReducer.categories);
+  const { gender, category } = useParams();
   return (
     <div>
       <div className="flex max-sm:flex-col justify-around items-center mx-20 my-5 max-sm:gap-4">
@@ -33,9 +37,7 @@ export default function ProductListDetails() {
       </div>
       <div className="flex flex-wrap justify-center items-center gap-7 mr-20 ml-24 max-sm:m-0 max-sm:flex-col">
         {data.productListDetail.map((value, i) => (
-          <div key={i}>
-            <ProductCard value={value} i={i} />
-          </div>
+          <ProductCard value={value} i={i} />
         ))}
       </div>
     </div>

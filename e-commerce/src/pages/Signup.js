@@ -2,6 +2,9 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import { useDispatch, useSelector } from "react-redux";
+import { rolesSuccess } from "../store/actions/globalActions";
+import { signUp } from "../store/actions/userActions";
 
 export default function Signup() {
   const {
@@ -11,20 +14,14 @@ export default function Signup() {
     formState: { errors, isValid },
   } = useForm({ mode: "onBlur" });
   const [formData, setFormData] = useState({});
-  const [roles, setRoles] = useState([]);
+  const roles = useSelector((state) => state.globalReducer.roles);
+  const dispatch = useDispatch();
   const history = useHistory();
   const selectedRole = watch("role");
   const confPass = watch("password");
 
   useEffect(() => {
-    axios
-      .get("https://workintech-fe-ecommerce.onrender.com/roles")
-      .then((res) => {
-        setRoles(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    dispatch(rolesSuccess());
   }, []);
 
   const onSubmit = (data) => {
@@ -54,15 +51,7 @@ export default function Signup() {
   useEffect(() => {
     console.log(formData);
     if (Object.keys(formData).length > 0) {
-      axios
-        .post("https://workintech-fe-ecommerce.onrender.com/signup", formData)
-        .then((res) => {
-          console.log(res);
-          history.goBack();
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+      dispatch(signUp(formData, history));
     }
   }, [formData]);
 
