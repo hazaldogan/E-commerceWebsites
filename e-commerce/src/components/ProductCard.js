@@ -1,13 +1,23 @@
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 export default function ProductCard({ value, i }) {
+  const categories = useSelector((store) => store.globalReducer.categories);
+  const nameSlug = value.name.toLowerCase().replaceAll(" ", "-");
+  const categoryCode = categories.find((c) => c.id == value.category_id)?.code;
+  const gender = categoryCode?.slice(0, 1) == "k" ? "kadin" : "erkek";
+  const category = categoryCode?.slice(2);
+  const productURL = `/shopping/${gender}/${category}/${value.id}/${nameSlug}`;
   return (
     <Link
       className="flex flex-col text-center w-[20%] max-sm:w-full max-sm:justify-center max-sm:items-center no-underline"
-      to={`/product/${i}`}
+      to={productURL}
     >
-      <div className="h-4/5 max-sm:h-full">
-        <img src={value.image} className="max-w-full h-full object-cover" />
+      <div className="h-[300px] max-sm:h-full">
+        <img
+          src={value.images[0].url}
+          className="max-w-full h-[300px] object-cover"
+        />
       </div>
       <div className="p-6 flex-col gap-2">
         <h5 className="text-slate-800 text-base font-bold ">{value.name}</h5>
@@ -15,15 +25,7 @@ export default function ProductCard({ value, i }) {
           {value.description}
         </h5>
         <div className="flex gap-1 justify-center">
-          <h5 className="text-stone-300 text-base font-bold ">{value.price}</h5>
-          <h5 className="text-teal-700 text-base font-bold">
-            {value.discountPrice}
-          </h5>
-        </div>
-        <div className="w-20 h-4 justify-start items-center gap-1.5 inline-flex">
-          {value.colors.map((color, i) => (
-            <div key={i} className={color} />
-          ))}
+          <h5 className="text-teal-700 text-base font-bold">{value.price}</h5>
         </div>
       </div>
     </Link>

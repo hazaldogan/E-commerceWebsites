@@ -6,10 +6,11 @@ import Logos from "../components/shop/Logos";
 import Pagination from "../components/Pagination";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
+import { useLocation, Link } from "react-router-dom";
 
 export default function ProductList() {
   const categories = useSelector((store) => store.globalReducer.categories);
-
+  const { search } = useLocation();
   const sortedCategories = categories
     .sort((a, b) => {
       return b.rating - a.rating;
@@ -23,7 +24,12 @@ export default function ProductList() {
         >
           <img className="object-cover h-[75%]" src={value.img} />
           <div className="absolute text-white">
-            <h4 className="font-bold">{value.title}</h4>
+            <Link
+              className="no-underline text-white"
+              to={`/shopping/kadin/${value.code.slice(2)}${search}`}
+            >
+              <h4 className="font-bold">{value.title}</h4>
+            </Link>
           </div>
         </div>
       );
