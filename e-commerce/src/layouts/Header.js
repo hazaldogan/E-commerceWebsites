@@ -106,7 +106,7 @@ export default function Header() {
             ["About", "/aboutus"],
             ["Blog", "/blog"],
             ["Contact", "/contactus"],
-            ["Pages", "/team"],
+            ["Team", "/team"],
           ].map(([title, url], idx) =>
             title === "Shop" ? (
               <div className="dropdown dropdown-hover">
