@@ -18,7 +18,10 @@ export default function Main() {
         <Route exact path="/shopping/:gender?/:category?">
           <ProductList />
         </Route>
-        <Route exact path="/product/:id">
+        <Route
+          exact
+          path="/shopping/:gender/:category/:productId/:productNameSlug"
+        >
           <Product />
         </Route>
         <Route exact path="/aboutus">

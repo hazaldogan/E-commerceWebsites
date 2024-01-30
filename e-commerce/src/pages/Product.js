@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Slide } from "react-slideshow-image";
 import "react-slideshow-image/dist/styles.css";
 import { data } from "../data";
@@ -10,14 +10,28 @@ import {
   faHeart,
   faCartShopping,
   faEye,
+  faArrowLeft,
 } from "@fortawesome/free-solid-svg-icons";
-import { useParams } from "react-router-dom/cjs/react-router-dom.min";
+import {
+  useHistory,
+  useParams,
+} from "react-router-dom/cjs/react-router-dom.min";
 import ProductCard from "../components/ProductCard";
 import Logos from "../components/shop/Logos";
-import { imageData } from "../assets/imageData";
+import { API } from "../api/axios";
+import { useSelector } from "react-redux";
 
 export default function Products() {
-  const { id } = useParams();
+  const { productId } = useParams();
+  const [product, setProduct] = useState({ images: [] });
+  const products = useSelector((store) => store.productReducer.productList);
+  const productsHome = products
+    .sort((a, b) => {
+      return b.rating - a.rating;
+    })
+    .slice(0, 8);
+
+  const history = useHistory();
 
   const divStyle = {
     display: "flex",
@@ -28,37 +42,61 @@ export default function Products() {
     backgroundRepeat: "no-repeat",
     height: "400px",
   };
+
+  useEffect(() => {
+    API.get(`/products/${productId}`)
+      .then((response) => {
+        setProduct(response.data);
+      })
+      .catch((error) => {
+        console.log("error", error);
+      });
+  }, [productId]);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div className="mx-52 max-sm:mx-5">
-      <div className="flex items-center my-4 justify-center">
-        <h4 className="font-bold text-sm">Home</h4>
-        <FontAwesomeIcon
-          icon={faChevronRight}
-          size="sm"
-          className="p-2 text-gray-500"
-        />
-        <h4 className="text-sm text-gray-500 ">Shop</h4>
+      <div className="flex items-center my-4 justify-between">
+        <div>
+          <FontAwesomeIcon
+            icon={faArrowLeft}
+            size="lg"
+            className="p-2 text-gray-500 cursor-pointer"
+            onClick={() => history.goBack()}
+          />
+        </div>
+        <div className="flex">
+          <h4 className="font-bold text-sm">Home</h4>
+          <FontAwesomeIcon
+            icon={faChevronRight}
+            size="sm"
+            className="p-2 text-gray-500"
+          />
+          <h4 className="text-sm text-gray-500 ">Shop</h4>
+        </div>
       </div>
       <div className="flex gap-10 justify-center items-center max-sm:flex-col">
         <div className="w-[50%] max-sm:w-full">
-          {/* <img className="w-full" src={data.productListDetail[id].image} /> */}
-          <Slide>
-            {imageData.productslide.map((slideImage, index) => (
-              <div key={index}>
-                <div
-                  style={{
-                    ...divStyle,
-                    backgroundImage: `url(${slideImage})`,
-                  }}
-                ></div>
-              </div>
-            ))}
-          </Slide>
+          {product.images.length > 0 && (
+            <Slide>
+              {product.images.map((slideImage, index) => (
+                <div key={index}>
+                  <div
+                    style={{
+                      ...divStyle,
+                      backgroundImage: `url(${slideImage.url})`,
+                    }}
+                  ></div>
+                </div>
+              ))}
+            </Slide>
+          )}
         </div>
         <div className="flex flex-col items-start text-start w-[50%] max-sm:w-full gap-3">
-          <h2 className="font-bold text-lg">
-            {data.productListDetail[id].name}
-          </h2>
+          <h2 className="font-bold text-lg">{product.name}</h2>
           <div className="flex items-center gap-1">
             <FontAwesomeIcon
               icon={faStar}
@@ -88,28 +126,16 @@ export default function Products() {
             <p className="text-sm font-bold text-gray-500">10 reviews</p>
           </div>
           <div className="my-3 flex flex-col gap-2">
-            <p className="font-bold text-2xl">
-              {data.productListDetail[id].price}
-            </p>
+            <p className="font-bold text-2xl">{product.price}</p>
             <p className="text-sm font-bold text-gray-500">
-              Availability : <span className="text-sky-500">In Stock</span>
+              Availability :{" "}
+              <span className="text-sky-500">
+                {product.stock > 0 ? "In Stock" : "No Stock"}
+              </span>
             </p>
           </div>
-          <p className="text-dm text-gray-500">
-            Met minim Mollie non desert Alamo est sit cliquey dolor do met sent.
-            RELIT official consequent door ENIM RELIT Mollie. Excitation venial
-            consequent sent nostrum met.
-          </p>
-          <hr />
-          <div className="w-20 h-4 justify-start items-center gap-1.5 inline-flex my-3">
-            {data.productListDetail[id].colors.map((color, i) => (
-              <div key={i} className={color} />
-            ))}
-          </div>
+          <p className="text-dm text-gray-500">{product.description}</p>
           <div className="mt-6 flex justify-start gap-3">
-            <button className="bg-sky-500 text-white text-sm px-3 py-2 rounded-md">
-              Select Options
-            </button>
             <div className=" flex items-center p-2 border rounded-[50%]">
               <FontAwesomeIcon
                 icon={faCartShopping}
@@ -235,7 +261,7 @@ export default function Products() {
           BESTSELLER PRODUCTS
         </h2>
         <div className="flex flex-wrap justify-center items-center gap-7 mt-10">
-          {data.bestsellers.map((value, i) => (
+          {productsHome.map((value, i) => (
             <ProductCard value={value} i={i} />
           ))}
         </div>
