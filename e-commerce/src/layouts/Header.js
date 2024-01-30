@@ -17,7 +17,7 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
-import { Link } from "react-router-dom/cjs/react-router-dom.min";
+import { Link, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
 import Gravatar from "react-gravatar";
 
@@ -25,6 +25,7 @@ export default function Header() {
   const [isActive, setIsActive] = useState(false);
   const user = useSelector((state) => state.userReducer.user);
   const categories = useSelector((store) => store.globalReducer.categories);
+  const { pathname, search } = useLocation();
   const womanCategories = categories.filter(
     (category) => category.gender === "k"
   );
@@ -139,7 +140,9 @@ export default function Header() {
                         return (
                           <li key={idx}>
                             <Link
-                              to={`/shopping/kadin/${category.code.slice(2)}`}
+                              to={`/shopping/kadin/${category.code.slice(
+                                2
+                              )}${search}`}
                               className="no-underline text-gray-500"
                             >
                               {category.title}
@@ -161,7 +164,9 @@ export default function Header() {
                         return (
                           <li key={idx}>
                             <Link
-                              to={`/shopping/erkek/${category.code.slice(2)}`}
+                              to={`/shopping/erkek/${category.code.slice(
+                                2
+                              )}${search}`}
                               className="no-underline text-gray-500"
                             >
                               {category.title}

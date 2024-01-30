@@ -8,7 +8,7 @@ import axiosWithAuth from "./api/axiosWithAuth";
 import { useDispatch, useSelector } from "react-redux";
 import { userSuccess } from "./store/actions/userActions";
 import { categoriesSuccess } from "./store/actions/globalActions";
-import { fetchAnother, fetchProduct } from "./store/actions/productActions";
+import { fetchProduct } from "./store/actions/productActions";
 
 function App() {
   const [token, setToken] = useLocalStorage("token", "");

@@ -2,12 +2,13 @@ import {
   PRODUCT_SUCCESS,
   PRODUCT_ERROR,
   FETCH_LOADING,
+  FETCH_MORE_PRODUCTS,
 } from "../actions/productActions";
 
-const NOT_FETCHED = "NOT FETCHED";
+const NOT_FETCHED = "NOT_FETCHED";
 const FETCHING = "FETCHING";
 const FETCHED = "FETCHED";
-const FETCH_FAILED = "FETCH FAILED";
+const FETCH_FAILED = "FETCH_FAILED";
 
 const initialState = {
   productList: [],
@@ -27,6 +28,13 @@ export const productReducer = (state = initialState, action) => {
         isLoading: false,
         error: "",
         fetchState: FETCHED,
+      };
+    case FETCH_MORE_PRODUCTS:
+      return {
+        ...state,
+        fetchState: FETCHED,
+        productList: [...state.productList, ...action.payload.productList],
+        total: action.payload.total,
       };
     case PRODUCT_ERROR:
       return {
