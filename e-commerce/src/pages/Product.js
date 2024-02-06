@@ -19,7 +19,9 @@ import {
 import ProductCard from "../components/ProductCard";
 import Logos from "../components/shop/Logos";
 import { API } from "../api/axios";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { cartAdd, updateCartItemPiece } from "../store/actions/shopCartActions";
+import { toast } from "react-toastify";
 
 export default function Products() {
   const { productId } = useParams();
@@ -32,6 +34,8 @@ export default function Products() {
     .slice(0, 8);
 
   const history = useHistory();
+  const { cart } = useSelector((store) => store.shopCartReducer);
+  const dispatch = useDispatch();
 
   const divStyle = {
     display: "flex",
@@ -56,6 +60,29 @@ export default function Products() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  const addToCartHandler = () => {
+    let isAvailable = false;
+    cart.map((item) => {
+      if (item.id === productId) isAvailable = true;
+      return item;
+    });
+    if (isAvailable) {
+      dispatch(updateCartItemPiece(productId, true));
+      toast.success("Add to cart successful!", {
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+    } else {
+      dispatch(cartAdd(product));
+    }
+  };
 
   return (
     <div className="mx-52 max-sm:mx-5">
@@ -140,7 +167,8 @@ export default function Products() {
               <FontAwesomeIcon
                 icon={faCartShopping}
                 size="sm"
-                className="p-1"
+                className="p-1 cursor-pointer"
+                onClick={addToCartHandler}
               />
             </div>
             <div className=" flex items-center p-2 border rounded-[50%]">

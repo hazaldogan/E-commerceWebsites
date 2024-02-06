@@ -1,5 +1,7 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { updateCartItemPiece } from "../store/actions/shopCartActions";
+import { toast } from "react-toastify";
 
 export default function ProductCard({ value, i }) {
   const categories = useSelector((store) => store.globalReducer.categories);
@@ -8,6 +10,7 @@ export default function ProductCard({ value, i }) {
   const gender = categoryCode?.slice(0, 1) == "k" ? "kadin" : "erkek";
   const category = categoryCode?.slice(2);
   const productURL = `/shopping/${gender}/${category}/${value.id}/${nameSlug}`;
+
   return (
     <Link
       className="flex flex-col text-center w-[20%] max-sm:w-full max-sm:justify-center max-sm:items-center no-underline"

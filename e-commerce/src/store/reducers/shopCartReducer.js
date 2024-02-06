@@ -28,7 +28,7 @@ export const shopCartReducer = (state = initialState, action) => {
       };
     case CART_REMOVE:
       const removedCart = state.cart.filter(
-        (item) => item.product.id !== action.payload
+        (item) => item.id !== action.payload
       );
       return {
         ...state,
@@ -38,8 +38,11 @@ export const shopCartReducer = (state = initialState, action) => {
       return {
         ...state,
         cart: state.cart.map((item) =>
-          item.product.id === action.payload.productId
-            ? { ...item, count: action.payload.count }
+          item.id === action.payload.productId
+            ? {
+                ...item,
+                count: action.payload.count ? item.count + 1 : item.count - 1,
+              }
             : item
         ),
       };

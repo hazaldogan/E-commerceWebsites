@@ -8,6 +8,7 @@ import {
   faHeart,
   faBars,
   faAngleDown,
+  faTrash,
 } from "@fortawesome/free-solid-svg-icons";
 import {
   faFacebook,
@@ -18,8 +19,10 @@ import {
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Gravatar from "react-gravatar";
+import { cartRemove } from "../store/actions/shopCartActions";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 export default function Header() {
   const [isActive, setIsActive] = useState(false);
@@ -32,6 +35,20 @@ export default function Header() {
   const manCategories = categories.filter(
     (category) => category.gender === "e"
   );
+  const dispatch = useDispatch();
+  const history = useHistory();
+  const { cart } = useSelector((store) => store.shopCartReducer);
+  const productURL = (productName, productId, categoryId) => {
+    const catCode = categories.find((c) => c.id == categoryId)?.code;
+    const nameSlug = productName.toLowerCase().replaceAll(" ", "-");
+    const gender = catCode?.slice(0, 1) == "k" ? "kadin" : "erkek";
+    const category = catCode?.slice(2);
+    const productURL = `/shopping/${gender}/${category}/${productId}/${nameSlug}`;
+    return productURL;
+  };
+  let productCount = cart.reduce((sum, product) => {
+    return sum + product.count;
+  }, 0);
 
   function clickHandler() {
     isActive ? setIsActive(false) : setIsActive(true);
@@ -212,7 +229,6 @@ export default function Header() {
             </div>
           )}
           <div className="items-center flex">
-            <FontAwesomeIcon icon={faSearch} size="sm" className="p-4" />
             <div className=" flex items-center p-4">
               <FontAwesomeIcon
                 icon={faCartShopping}
@@ -221,9 +237,73 @@ export default function Header() {
               />
               <div className=" font-normal text-sm ">1</div>
             </div>
-            <div className=" flex items-center p-4">
-              <FontAwesomeIcon icon={faHeart} size="sm" className="pr-1" />
-              <div className="font-normal text-sm ">1</div>
+            <div
+              tabIndex={0}
+              className="dropdown-content min-w-[20rem] z-[30] right-[1px] menu p-4 shadow-xl bg-white rounded-box "
+            >
+              <ul className="w-fit gap-1 flex flex-col py-2 ">
+                <h2 className="text-slate-700 font-semibold mb-2">{`My Cart (${productCount} Products)`}</h2>
+                {cart.map((item, index) => {
+                  console.log(item);
+                  return (
+                    <li
+                      key={index}
+                      className="border rounded shadow-md "
+                      onClick={() =>
+                        history.push(
+                          productURL(item.name, item.id, item.category_id)
+                        )
+                      }
+                    >
+                      <div className="flex gap-4 justify-between ">
+                        <div className="flex gap-4 h-fit my-1">
+                          <img
+                            src={item.images[0] ? item.images[0].url : ""}
+                            className="h-16 object-cover "
+                          />
+                          <div className="flex flex-col justify-center text-slate-700 ">
+                            <h3 className=" font-semibold ">{item.name}</h3>
+                            <p className="font-normal text-xs text-slate-500">
+                              Amount: {item.count}
+                            </p>
+                            <p className="font-semibold ">
+                              {`$${(item.price * item.count).toFixed(2)}`}
+                            </p>
+                          </div>
+                        </div>
+                        <FontAwesomeIcon
+                          icon={faTrash}
+                          className=" text-neutral hover:text-error cursor-pointer"
+                          onClick={() => {
+                            dispatch(cartRemove(item.id));
+                          }}
+                        />
+                      </div>
+                    </li>
+                  );
+                })}
+                {/* {cart.length ? (
+                  <div className="flex gap-2 justify-between">
+                    <Link to="/cart">
+                      <button className="ring-1 bg-[#0ea5e9] ring-slate-100 text-white font-semibold rounded-md py-2 px-4">
+                        Go to Cart
+                      </button>
+                    </Link>
+                    <button
+                      className="ring-1 bg-[#0ea5e9] ring-slate-100 text-white font-semibold rounded-md py-2 px-4"
+                      onClick={() => {
+                        history.push("/order");
+                      }}
+                    >
+                      Confirm Order
+                    </button>
+                  </div>
+                ) : (
+                  <p className="pt-3 text-error font-semibold">
+                    Your cart is empty.
+                  </p>
+                )} */}
+              </ul>
             </div>
           </div>
         </div>
