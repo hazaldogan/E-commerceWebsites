@@ -27,6 +27,7 @@ export default function Products() {
   const { productId } = useParams();
   const [product, setProduct] = useState({ images: [] });
   const products = useSelector((store) => store.productReducer.productList);
+  const [available, setAvailable] = useState(false);
   const productsHome = products
     .sort((a, b) => {
       return b.rating - a.rating;
@@ -62,12 +63,13 @@ export default function Products() {
   }, []);
 
   const addToCartHandler = () => {
-    let isAvailable = false;
     cart.map((item) => {
-      if (item.id === productId) isAvailable = true;
+      console.log("product " + productId);
+      console.log("item " + item.id);
+      if (item.id === productId) setAvailable(true);
       return item;
     });
-    if (isAvailable) {
+    if (available) {
       dispatch(updateCartItemPiece(productId, true));
       toast.success("Add to cart successful!", {
         position: "bottom-right",
@@ -163,14 +165,12 @@ export default function Products() {
           </div>
           <p className="text-dm text-gray-500">{product.description}</p>
           <div className="mt-6 flex justify-start gap-3">
-            <div className=" flex items-center p-2 border rounded-[50%]">
-              <FontAwesomeIcon
-                icon={faCartShopping}
-                size="sm"
-                className="p-1 cursor-pointer"
-                onClick={addToCartHandler}
-              />
-            </div>
+            <button
+              className="border p-2 rounded-md bg-sky-300 text-white text-sm"
+              onClick={addToCartHandler}
+            >
+              Add To Cart
+            </button>
             <div className=" flex items-center p-2 border rounded-[50%]">
               <FontAwesomeIcon icon={faHeart} size="sm" className="p-1" />
             </div>

@@ -59,7 +59,6 @@ export const signUp = (data, history) => (dispatch) => {
 export const login = (data, history, setToken) => (dispatch) => {
   API.post("/login", data)
     .then((res) => {
-      console.log(res);
       dispatch(userSuccess(res.data));
       setToken(res.data.token);
       toast.success("Login successful!", {
