@@ -365,12 +365,12 @@ export default function Header() {
                   {cart.length ? (
                     <div className="flex gap-2 pt-2 justify-between">
                       <Link to="/cart">
-                        <button className="ring-1 bg-[#0ea5e9] ring-slate-100 text-white font-semibold rounded-md py-2 px-4">
+                        <button className=" bg-sky-400 text-white text-xs font-semibold rounded-md py-2 px-4">
                           Go to Cart
                         </button>
                       </Link>
                       <button
-                        className="ring-1 bg-[#0ea5e9] ring-slate-100 text-white font-semibold rounded-md py-2 px-4"
+                        className=" bg-sky-400 text-xs text-white font-semibold rounded-md py-2 px-4"
                         onClick={() => {
                           history.push("/order");
                         }}

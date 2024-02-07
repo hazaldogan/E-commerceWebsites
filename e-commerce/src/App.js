@@ -12,6 +12,8 @@ import { fetchProduct } from "./store/actions/productActions";
 
 function App() {
   const [token, setToken] = useLocalStorage("token", "");
+  const [cartLocal, setCartLocal] = useLocalStorage("cart", "");
+  const { cart } = useSelector((store) => store.shopCartReducer);
   const dispatch = useDispatch();
   let isLoggedIn = useSelector(
     (store) => store.userReducer.user

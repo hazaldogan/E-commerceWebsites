@@ -5,10 +5,12 @@ import {
 } from "../store/actions/shopCartActions";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 export default function Cart() {
   const { cart } = useSelector((store) => store.shopCartReducer);
   const dispatch = useDispatch();
+  const history = useHistory();
   function decreaseHandler(id) {
     dispatch(updateCartItemPiece(id, false));
   }
@@ -16,7 +18,13 @@ export default function Cart() {
     dispatch(updateCartItemPiece(id, true));
   }
   return (
-    <div className="mt-10">
+    <div className="m-10">
+      <button
+        className="border bg-sky-400 rounded-md text-white p-2 my-3 ml-[69%]"
+        onClick={() => history.push("/order")}
+      >
+        Confirm Cart
+      </button>
       <p className="mx-40 text-start text-sm border-2 bg-slate-500 text-white p-2 rounded-md border-slate-700">
         You can purchase the products in your cart by selecting an individual or
         corporate invoice.
