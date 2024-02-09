@@ -19,12 +19,15 @@ import {
 import ProductCard from "../components/ProductCard";
 import Logos from "../components/shop/Logos";
 import { API } from "../api/axios";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { cartAdd, updateCartItemPiece } from "../store/actions/shopCartActions";
+import { toast } from "react-toastify";
 
 export default function Products() {
   const { productId } = useParams();
   const [product, setProduct] = useState({ images: [] });
   const products = useSelector((store) => store.productReducer.productList);
+  const [available, setAvailable] = useState(false);
   const productsHome = products
     .sort((a, b) => {
       return b.rating - a.rating;
@@ -32,6 +35,8 @@ export default function Products() {
     .slice(0, 8);
 
   const history = useHistory();
+  const { cart } = useSelector((store) => store.shopCartReducer);
+  const dispatch = useDispatch();
 
   const divStyle = {
     display: "flex",
@@ -56,6 +61,30 @@ export default function Products() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  const addToCartHandler = () => {
+    cart.map((item) => {
+      console.log("product " + productId);
+      console.log("item " + item.id);
+      if (item.id === productId) setAvailable(true);
+      return item;
+    });
+    if (available) {
+      dispatch(updateCartItemPiece(productId, true));
+      toast.success("Add to cart successful!", {
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+    } else {
+      dispatch(cartAdd(product));
+    }
+  };
 
   return (
     <div className="mx-52 max-sm:mx-5">
@@ -136,13 +165,12 @@ export default function Products() {
           </div>
           <p className="text-dm text-gray-500">{product.description}</p>
           <div className="mt-6 flex justify-start gap-3">
-            <div className=" flex items-center p-2 border rounded-[50%]">
-              <FontAwesomeIcon
-                icon={faCartShopping}
-                size="sm"
-                className="p-1"
-              />
-            </div>
+            <button
+              className="border p-2 rounded-md bg-sky-300 text-white text-sm"
+              onClick={addToCartHandler}
+            >
+              Add To Cart
+            </button>
             <div className=" flex items-center p-2 border rounded-[50%]">
               <FontAwesomeIcon icon={faHeart} size="sm" className="p-1" />
             </div>

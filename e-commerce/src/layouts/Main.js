@@ -7,6 +7,7 @@ import Team from "../pages/Team";
 import ContactUs from "../pages/ContactUs";
 import Signup from "../pages/Signup";
 import Login from "../pages/Login";
+import Cart from "../pages/Cart";
 
 export default function Main() {
   return (
@@ -26,6 +27,9 @@ export default function Main() {
         </Route>
         <Route exact path="/aboutus">
           <AboutUs />
+        </Route>
+        <Route exact path="/cart">
+          <Cart />
         </Route>
         <Route exact path="/team">
           <Team />
