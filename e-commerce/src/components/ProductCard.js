@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { cartAdd, updateCartItemPiece } from "../store/actions/shopCartActions";
 import { toast } from "react-toastify";
 
-export default function ProductCard({ value, i }) {
+export default function ProductCard({ value }) {
   const categories = useSelector((store) => store.globalReducer.categories);
   const nameSlug = value.name.toLowerCase().replaceAll(" ", "-");
   const categoryCode = categories.find((c) => c.id == value.category_id)?.code;
