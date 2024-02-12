@@ -64,7 +64,7 @@ export default function Products() {
   const addToCartHandler = () => {
     let isAvailable = false;
     cart.map((item) => {
-      if (item.id === Number(productId)) isAvailable = true;
+      if (item.product.id === Number(productId)) isAvailable = true;
       return item;
     });
     if (isAvailable) {

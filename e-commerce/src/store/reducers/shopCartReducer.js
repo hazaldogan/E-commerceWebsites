@@ -6,6 +6,7 @@ import {
   UPDATE_CART_ITEM_PIECE,
   CART_CLEAR,
   UPDATE_PAYMENT,
+  SET_CHECK,
 } from "../actions/shopCartActions";
 
 const initialState = {
@@ -23,13 +24,23 @@ export const shopCartReducer = (state = initialState, action) => {
           ...state.cart,
           {
             count: 1,
-            ...action.payload,
+            checked: true,
+            product: action.payload,
           },
         ],
       };
+    case SET_CHECK:
+      return {
+        ...state,
+        cart: state.cart.map((item) =>
+          item.product.id == action.payload.productId
+            ? { ...item, checked: action.payload.isChecked }
+            : item
+        ),
+      };
     case CART_REMOVE:
       const removedCart = state.cart.filter(
-        (item) => item.id !== action.payload
+        (item) => item.product.id !== action.payload
       );
       return {
         ...state,
@@ -39,7 +50,7 @@ export const shopCartReducer = (state = initialState, action) => {
       return {
         ...state,
         cart: state.cart.map((item) =>
-          item.id === action.payload.productId
+          item.product.id === action.payload.productId
             ? {
                 ...item,
                 count: action.payload.count ? item.count + 1 : item.count - 1,

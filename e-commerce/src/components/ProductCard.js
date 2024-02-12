@@ -16,7 +16,7 @@ export default function ProductCard({ value }) {
   const addToCartHandler = () => {
     let isAvailable = false;
     cart.map((item) => {
-      if (item.id === value.id) isAvailable = true;
+      if (item.product.id === value.id) isAvailable = true;
       return item;
     });
     if (isAvailable) {
