@@ -40,7 +40,7 @@ function App() {
   return (
     <div className="App max-sm:max-w-xs no-underline	">
       <Header />
-      <Main />
+      <Main isLoggedIn={isLoggedIn} />
       <Footer />
     </div>
   );

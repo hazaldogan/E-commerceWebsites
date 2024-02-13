@@ -8,6 +8,8 @@ import ContactUs from "../pages/ContactUs";
 import Signup from "../pages/Signup";
 import Login from "../pages/Login";
 import Cart from "../pages/Cart";
+import ProtectedPage from "../components/ProtectedPage";
+import Order from "../pages/Order";
 
 export default function Main() {
   return (
@@ -30,6 +32,9 @@ export default function Main() {
         </Route>
         <Route exact path="/cart">
           <Cart />
+        </Route>
+        <Route exact path="/order">
+          <ProtectedPage pageComponent={Order} fromURL={"/order"} />
         </Route>
         <Route exact path="/team">
           <Team />
