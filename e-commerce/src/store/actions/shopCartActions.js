@@ -58,9 +58,10 @@ export const addressAdd = (address) => {
 };
 
 export const addAdress = (address) => {
-  axiosWithAuth
+  axiosWithAuth()
     .post("/user/address", address)
     .then((res) => {
+      console.log(res);
       toast.success("Address registered successfully!", {
         position: "bottom-right",
         autoClose: 5000,
