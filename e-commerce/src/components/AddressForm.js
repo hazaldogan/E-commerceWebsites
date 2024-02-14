@@ -7,6 +7,8 @@ import { useDispatch } from "react-redux";
 import { addAdress } from "../store/actions/shopCartActions";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import axios from "axios";
+import axiosWithAuth from "../api/axiosWithAuth";
 
 export default function AddressForm(props) {
   const { setShowModal } = props;
@@ -48,7 +50,14 @@ export default function AddressForm(props) {
   };
 
   const onSubmit = (address) => {
-    dispatch(addAdress(address));
+    axiosWithAuth()
+      .post("user/address", address)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
     setShowModal(false);
   };
 
