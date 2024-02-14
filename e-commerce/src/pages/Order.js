@@ -11,8 +11,10 @@ import CartUpdateForm from "../components/order/CardUpdateForm";
 import {
   addressAdd,
   cartAdd,
+  cartClear,
   updatePayment,
 } from "../store/actions/shopCartActions";
+import axios from "axios";
 
 export default function Order() {
   const { cart } = useSelector((store) => store.shopCartReducer);
@@ -37,6 +39,8 @@ export default function Order() {
     .toFixed(2);
   const cargo = 39.99;
 
+  let date = new Date();
+
   useEffect(() => {
     axiosWithAuth()
       .get("user/address")
@@ -58,6 +62,42 @@ export default function Order() {
         console.log(err);
       });
   }, [toggle]);
+
+  const completeOrder = () => {
+    const orderData = {
+      address_id: address.id,
+      order_date: date.toISOString().slice(0, 19),
+      card_no: payment.card_no,
+      card_name: payment.name_on_card,
+      card_expire_month: payment.expire_month,
+      card_expire_year: payment.expire_year,
+      card_cvv: 123,
+      price:
+        total < 300
+          ? parseFloat(Number(total) + Number(cargo)).toFixed(2)
+          : total,
+      products: [
+        cart.map((item) => {
+          const newObj = {
+            product_id: item.product.id,
+            count: item.count,
+            detail: item.description,
+          };
+          return newObj;
+        }),
+      ],
+    };
+    axiosWithAuth()
+      .post("/order", orderData)
+      .then((res) => {
+        console.log(res);
+        dispatch(cartClear());
+        history.push("/");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   return (
     <div className="m-10 flex justify-center items-start gap-4">
@@ -214,7 +254,10 @@ export default function Order() {
         )}
       </div>
       <div className="flex flex-col justify-center items-start text-start gap-3 w-[25%] mt-10">
-        <button className="border bg-sky-400 rounded-md text-white p-2 w-full">
+        <button
+          className="border bg-sky-400 rounded-md text-white p-2 w-full"
+          onClick={completeOrder}
+        >
           Complete Order
         </button>
         <div className="shadow-md rounded-md p-3 w-full">
@@ -247,7 +290,10 @@ export default function Order() {
             </p>
           </div>
         </div>
-        <button className="border bg-sky-400 rounded-md text-white p-2 w-full">
+        <button
+          className="border bg-sky-400 rounded-md text-white p-2 w-full"
+          onClick={completeOrder}
+        >
           Complete Order
         </button>
       </div>

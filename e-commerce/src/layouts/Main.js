@@ -10,6 +10,7 @@ import Login from "../pages/Login";
 import Cart from "../pages/Cart";
 import ProtectedPage from "../components/ProtectedPage";
 import Order from "../pages/Order";
+import OrderList from "../pages/OrderList";
 
 export default function Main() {
   return (
@@ -35,6 +36,9 @@ export default function Main() {
         </Route>
         <Route exact path="/order">
           <ProtectedPage pageComponent={Order} fromURL={"/order"} />
+        </Route>
+        <Route exact path="/order">
+          <ProtectedPage pageComponent={OrderList} fromURL={"/orderlist"} />
         </Route>
         <Route exact path="/team">
           <Team />
