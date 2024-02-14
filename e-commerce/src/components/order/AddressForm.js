@@ -4,11 +4,11 @@ import {
   getNeighbourhoodsByCityCodeAndDistrict,
 } from "turkey-neighbourhoods";
 import { useDispatch } from "react-redux";
-import { addAdress } from "../store/actions/shopCartActions";
+import { addAdress } from "../../store/actions/shopCartActions";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import axios from "axios";
-import axiosWithAuth from "../api/axiosWithAuth";
+import axiosWithAuth from "../../api/axiosWithAuth";
 
 export default function AddressForm(props) {
   const { setShowModal } = props;

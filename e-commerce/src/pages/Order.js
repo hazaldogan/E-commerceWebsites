@@ -1,11 +1,18 @@
 import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faUser, faMobile } from "@fortawesome/free-solid-svg-icons";
 import axiosWithAuth from "../api/axiosWithAuth";
-import AddressForm from "../components/AddressForm";
+import AddressForm from "../components/order/AddressForm";
 import { useForm } from "react-hook-form";
+import CartForm from "../components/order/CardForm";
+import CartUpdateForm from "../components/order/CardUpdateForm";
+import {
+  addressAdd,
+  cartAdd,
+  updatePayment,
+} from "../store/actions/shopCartActions";
 
 export default function Order() {
   const { cart } = useSelector((store) => store.shopCartReducer);
@@ -13,22 +20,13 @@ export default function Order() {
   const [toggle, setToggle] = useState(true);
   const [addresses, setAddresses] = useState([]);
   const [showModal, setShowModal] = useState(false);
-  const [showModalCart, setShowModalCart] = useState(false);
+  const [showModalCard, setShowModalCard] = useState(false);
   const [cards, setCards] = useState([]);
-  const [updateCartModal, setUpdateCartModal] = useState(false);
-  const {
-    register,
-    handleSubmit,
-    formState: { errors, isValid },
-  } = useForm({
-    defaultValues: {
-      card_no: "",
-      expire_month: "",
-      expire_year: "",
-      name_on_card: "",
-    },
-    mode: "onBlur",
-  });
+  const [updateCardModal, setUpdateCardModal] = useState(false);
+  const [updateAddressModal, setUpdateAddressModal] = useState(false);
+  const dispatch = useDispatch();
+  const { payment } = useSelector((store) => store.shopCartReducer);
+  const { address } = useSelector((store) => store.shopCartReducer);
 
   let total = cart
     .reduce((sum, item) => {
@@ -48,30 +46,18 @@ export default function Order() {
       .catch((err) => {
         console.log(err);
       });
+  }, []);
 
+  useEffect(() => {
     axiosWithAuth()
       .get("user/card")
       .then((res) => {
-        console.log(res);
         setCards(res.data);
       })
       .catch((err) => {
         console.log(err);
       });
-  }, []);
-
-  const onSubmit = (card) => {
-    console.log("post data", card);
-    axiosWithAuth()
-      .post("user/card", card)
-      .then((res) => {
-        console.log("response", res);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-    setShowModalCart(false);
-  };
+  }, [toggle]);
 
   return (
     <div className="m-10 flex justify-center items-start gap-4">
@@ -124,7 +110,11 @@ export default function Order() {
                 {addresses.map((item) => (
                   <div className="border rounded-md bg-gray-300 p-4 flex flex-col">
                     <div className="flex justify-between">
-                      <input name="address" type="radio" />
+                      <input
+                        name="address"
+                        type="radio"
+                        onChange={() => dispatch(addressAdd(item))}
+                      />
                       <a htmlFor="#" className="text-xs">
                         Edit
                       </a>
@@ -163,91 +153,17 @@ export default function Order() {
               <p className="font-bold">Card Informations</p>
               <p
                 className="cursor-pointer underline text-sm"
-                onClick={() => setShowModalCart(true)}
+                onClick={() => setShowModalCard(true)}
               >
                 Pay With Another Card
               </p>
             </div>
-            {showModalCart && (
+            {showModalCard && (
               <>
                 <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
                   <div className="relative w-auto my-6 mx-auto max-w-3xl">
                     <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
-                      <form
-                        onSubmit={handleSubmit(onSubmit)}
-                        className="flex flex-col gap-2 p-10"
-                      >
-                        <div>
-                          <label
-                            htmlFor="card_no"
-                            className=" text-sm font-bold text-gray-700 tracking-wide"
-                          >
-                            Card No
-                          </label>
-                          <input
-                            id="card_no"
-                            className=" bg-white w-full text-base p-2 border border-gray-300 rounded-md"
-                            type="text"
-                            placeholder="Enter your card no"
-                            {...register("card_no")}
-                          />
-                          <div className="mt-3">
-                            <div className="flex gap-2">
-                              <div>
-                                <label
-                                  htmlFor="expire_month"
-                                  className=" text-sm font-bold text-gray-700 tracking-wide"
-                                >
-                                  Expire Month
-                                </label>
-                                <input
-                                  id="expire_month"
-                                  className=" bg-white w-full text-base p-2 border border-gray-300 rounded-md"
-                                  type="text"
-                                  placeholder="MM"
-                                  {...register("expire_month")}
-                                />
-                              </div>
-                              <div>
-                                <label
-                                  htmlFor="expire_year"
-                                  className=" text-sm font-bold text-gray-700 tracking-wide"
-                                >
-                                  Expire Year
-                                </label>
-                                <input
-                                  id="expire_year"
-                                  className=" bg-white w-full text-base p-2 border border-gray-300 rounded-md"
-                                  type="text"
-                                  placeholder="YYYY"
-                                  {...register("expire_year")}
-                                />
-                              </div>
-                            </div>
-                            <div className="mt-3">
-                              <label
-                                htmlFor="name_on_card"
-                                className=" text-sm font-bold text-gray-700 tracking-wide"
-                              >
-                                Name On Card
-                              </label>
-                              <input
-                                id="name_on_card"
-                                className=" bg-white w-full text-base p-2 border border-gray-300 rounded-md"
-                                type="text"
-                                {...register("name_on_card")}
-                              />
-                            </div>
-                          </div>
-                        </div>
-                        <button
-                          type="submit"
-                          disabled={!isValid}
-                          className="bg-slate-600 text-white px-4 py-2 rounded-lg text-sm"
-                        >
-                          Add
-                        </button>
-                      </form>
+                      <CartForm setShowModalCard={setShowModalCard} />
                     </div>
                   </div>
                 </div>
@@ -259,10 +175,34 @@ export default function Order() {
               <div className="border rounded-md bg-gray-300 p-4 flex flex-col w-[50%] mb-2">
                 <div className="flex justify-between">
                   <div>
-                    <input name="card" type="radio" />
+                    <input
+                      name="card"
+                      type="radio"
+                      onChange={() => dispatch(updatePayment(item))}
+                    />
                     <label htmlFor="card">{item.name_on_card}</label>
                   </div>
-                  <p className="text-xs cursor-pointer underline">Edit</p>
+                  <p
+                    className="text-xs cursor-pointer underline"
+                    onClick={() => setUpdateCardModal(true)}
+                  >
+                    Edit
+                  </p>
+                  {updateCardModal && (
+                    <>
+                      <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
+                        <div className="relative w-auto my-6 mx-auto max-w-3xl">
+                          <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+                            <CartUpdateForm
+                              setUpdateCardModal={setUpdateCardModal}
+                              item={item}
+                            />
+                          </div>
+                        </div>
+                      </div>
+                      <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
+                    </>
+                  )}
                 </div>
                 <div className=" flex flex-col items-start mt-2 ml-2">
                   <p>{item.card_no}</p>
@@ -274,11 +214,8 @@ export default function Order() {
         )}
       </div>
       <div className="flex flex-col justify-center items-start text-start gap-3 w-[25%] mt-10">
-        <button
-          className="border bg-sky-400 rounded-md text-white p-2 w-full"
-          onClick={() => history.push("/order")}
-        >
-          Confirm Cart
+        <button className="border bg-sky-400 rounded-md text-white p-2 w-full">
+          Complete Order
         </button>
         <div className="shadow-md rounded-md p-3 w-full">
           <p className="font-bold text-gray-500">Order Summary</p>
@@ -310,11 +247,8 @@ export default function Order() {
             </p>
           </div>
         </div>
-        <button
-          className="border bg-sky-400 rounded-md text-white p-2 w-full"
-          onClick={() => history.push("/order")}
-        >
-          Confirm Cart
+        <button className="border bg-sky-400 rounded-md text-white p-2 w-full">
+          Complete Order
         </button>
       </div>
     </div>
