@@ -36,6 +36,7 @@
     "redux-thunk": "^2.4.2",
     "tailwind": "^4.0.0",
     "toastify": "^2.0.1",
+    "turkey-neighbourhoods": "^3.1.0",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

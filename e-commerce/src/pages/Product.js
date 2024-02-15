@@ -27,7 +27,6 @@ export default function Products() {
   const { productId } = useParams();
   const [product, setProduct] = useState({ images: [] });
   const products = useSelector((store) => store.productReducer.productList);
-  const [available, setAvailable] = useState(false);
   const productsHome = products
     .sort((a, b) => {
       return b.rating - a.rating;
@@ -63,14 +62,13 @@ export default function Products() {
   }, []);
 
   const addToCartHandler = () => {
+    let isAvailable = false;
     cart.map((item) => {
-      console.log("product " + productId);
-      console.log("item " + item.id);
-      if (item.id === productId) setAvailable(true);
+      if (item.product.id === Number(productId)) isAvailable = true;
       return item;
     });
-    if (available) {
-      dispatch(updateCartItemPiece(productId, true));
+    if (isAvailable) {
+      dispatch(updateCartItemPiece(Number(productId), true));
       toast.success("Add to cart successful!", {
         position: "bottom-right",
         autoClose: 5000,

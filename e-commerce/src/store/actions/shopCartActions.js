@@ -7,11 +7,19 @@ export const UPDATE_CART_ITEM_PIECE = "UPDATE_CART_ITEM_PIECE";
 export const ADDRESS_ADD = "ADDRESS_ADD";
 export const CART_CLEAR = "CART_CLEAR";
 export const UPDATE_PAYMENT = "UPDATE_PAYMENT";
+export const SET_CHECK = "SET_CHECK";
 
 export const cartAdd = (product) => {
   return {
     type: CART_ADD,
     payload: product,
+  };
+};
+
+export const setCheck = (productId, isChecked) => {
+  return {
+    type: SET_CHECK,
+    payload: { productId, isChecked },
   };
 };
 
@@ -50,9 +58,10 @@ export const addressAdd = (address) => {
 };
 
 export const addAdress = (address) => {
-  axiosWithAuth
+  axiosWithAuth()
     .post("/user/address", address)
     .then((res) => {
+      console.log(res);
       toast.success("Address registered successfully!", {
         position: "bottom-right",
         autoClose: 5000,

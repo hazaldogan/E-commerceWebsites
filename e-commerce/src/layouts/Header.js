@@ -124,23 +124,33 @@ export default function Header() {
                         className="border rounded"
                         onClick={() =>
                           history.push(
-                            productURL(item.name, item.id, item.category_id)
+                            productURL(
+                              item.product.name,
+                              item.product.id,
+                              item.product.category_id
+                            )
                           )
                         }
                       >
                         <div className="flex gap-4 justify-between ">
                           <div className="flex gap-4 h-fit">
                             <img
-                              src={item.images[0] ? item.images[0].url : ""}
+                              src={
+                                item.product.images[0]
+                                  ? item.product.images[0].url
+                                  : ""
+                              }
                               className="h-24 object-cover "
                             />
                             <div className="flex flex-col justify-center text-slate-700 ">
-                              <h3 className="text-xs">{item.name}</h3>
+                              <h3 className="text-xs">{item.product.name}</h3>
                               <p className="text-xs text-slate-500">
                                 Count: {item.count}
                               </p>
                               <p className="font-bold">
-                                {`$${(item.price * item.count).toFixed(2)}`}
+                                {`$${(item.product.price * item.count).toFixed(
+                                  2
+                                )}`}
                               </p>
                             </div>
                           </div>
@@ -148,7 +158,7 @@ export default function Header() {
                             icon={faTrash}
                             className=" text-neutral hover:text-error cursor-pointer"
                             onClick={() => {
-                              dispatch(cartRemove(item.id));
+                              dispatch(cartRemove(item.product.id));
                             }}
                           />
                         </div>
@@ -318,65 +328,71 @@ export default function Header() {
               </label>
               <div
                 tabIndex={0}
-                className="dropdown-content min-w-[23rem] z-[30] right-[1px] menu shadow-xl bg-white rounded-box"
+                className="dropdown-content min-w-[25rem] z-[30] right-[1px] menu shadow-xl bg-white rounded-box"
               >
-                <p className="text-sm text-start text-slate-700 pl-8 pt-1 font-bold">
-                  {`My Cart (${productCount} Product)`}
+                <p className="text-sm text-start text-gray-700 pl-8 pt-1 font-bold">
+                  {`${productCount} Product`}
                 </p>
                 <ul className="w-fit gap-1 flex flex-col">
                   {cart.map((item, index) => {
                     return (
                       <li
                         key={index}
-                        className="border rounded"
                         onClick={() =>
                           history.push(
-                            productURL(item.name, item.id, item.category_id)
+                            productURL(
+                              item.product.name,
+                              item.product.id,
+                              item.product.category_id
+                            )
                           )
                         }
                       >
                         <div className="flex gap-4 justify-between ">
                           <div className="flex gap-4 h-fit">
                             <img
-                              src={item.images[0] ? item.images[0].url : ""}
-                              className="h-24 object-cover "
+                              src={
+                                item.product.images[0]
+                                  ? item.product.images[0].url
+                                  : ""
+                              }
+                              className="h-32 object-cover "
                             />
                             <div className="flex flex-col justify-center text-slate-700 ">
-                              <h3 className="text-xs">{item.name}</h3>
+                              <h3 className="text-xs">
+                                {item.product.name +
+                                  " " +
+                                  item.product.description}
+                              </h3>
                               <p className="text-xs text-slate-500">
                                 Count: {item.count}
                               </p>
-                              <p className="font-bold">
-                                {`$${(item.price * item.count).toFixed(2)}`}
+                              <p className="font-bold text-xs">
+                                {`$${(item.product.price * item.count).toFixed(
+                                  2
+                                )}`}
                               </p>
                             </div>
                           </div>
                           <FontAwesomeIcon
                             icon={faTrash}
-                            className=" text-neutral hover:text-error cursor-pointer"
+                            className="hover:text-red-400 cursor-pointer text-gray-400"
                             onClick={() => {
-                              dispatch(cartRemove(item.id));
+                              dispatch(cartRemove(item.product.id));
                             }}
                           />
                         </div>
+                        <hr />
                       </li>
                     );
                   })}
                   {cart.length ? (
-                    <div className="flex gap-2 pt-2 justify-between">
+                    <div className="flex gap-2 pt-2 justify-end">
                       <Link to="/cart">
                         <button className=" bg-sky-400 text-white text-xs font-semibold rounded-md py-2 px-4">
                           Go to Cart
                         </button>
                       </Link>
-                      <button
-                        className=" bg-sky-400 text-xs text-white font-semibold rounded-md py-2 px-4"
-                        onClick={() => {
-                          history.push("/order");
-                        }}
-                      >
-                        Confirm Order
-                      </button>
                     </div>
                   ) : (
                     <p className="pt-3 text-error font-semibold">
