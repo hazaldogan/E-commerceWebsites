@@ -107,7 +107,6 @@ export default function Header() {
                     className="hidden max-sm:block text-slate-800"
                   />
                 </Link>
-                <span className="text-sm font-semibold">{productCount}</span>
               </label>
               <div
                 tabIndex={0}
@@ -402,6 +401,12 @@ export default function Header() {
                 </ul>
               </div>
             </div>
+          </div>
+          <div
+            className="font-bold cursor-pointer text-sky-600"
+            onClick={() => history.push("/orderlist")}
+          >
+            My Orders
           </div>
         </div>
       </div>
