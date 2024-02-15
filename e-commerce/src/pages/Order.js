@@ -63,29 +63,27 @@ export default function Order() {
       });
   }, [toggle]);
 
+  let newTotal =
+    total < 300 ? parseFloat(Number(total) + Number(cargo)).toFixed(2) : total;
+
   const completeOrder = () => {
     const orderData = {
       address_id: address.id,
       order_date: date.toISOString().slice(0, 19),
-      card_no: payment.card_no,
+      card_no: Number(payment.card_no.replace(" ", "")),
       card_name: payment.name_on_card,
-      card_expire_month: payment.expire_month,
-      card_expire_year: payment.expire_year,
-      card_cvv: 123,
-      price:
-        total < 300
-          ? parseFloat(Number(total) + Number(cargo)).toFixed(2)
-          : total,
-      products: [
-        cart.map((item) => {
-          const newObj = {
-            product_id: item.product.id,
-            count: item.count,
-            detail: item.description,
-          };
-          return newObj;
-        }),
-      ],
+      card_expire_month: Number(payment.expire_month),
+      card_expire_year: Number(payment.expire_year),
+      card_ccv: 123,
+      price: Number(newTotal),
+      products: cart.map((item) => {
+        const newObj = {
+          product_id: Number(item.product.id),
+          count: Number(item.count),
+          detail: item.product.description,
+        };
+        return newObj;
+      }),
     };
     axiosWithAuth()
       .post("/order", orderData)

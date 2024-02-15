@@ -37,7 +37,7 @@ export default function Main() {
         <Route exact path="/order">
           <ProtectedPage pageComponent={Order} fromURL={"/order"} />
         </Route>
-        <Route exact path="/order">
+        <Route exact path="/orderlist">
           <ProtectedPage pageComponent={OrderList} fromURL={"/orderlist"} />
         </Route>
         <Route exact path="/team">
