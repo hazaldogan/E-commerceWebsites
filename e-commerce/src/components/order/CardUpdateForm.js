@@ -11,7 +11,7 @@ export default function CartUpdateForm({ setUpdateCardModal, item }) {
     mode: "onBlur",
   });
   const [formData, setFormData] = useState({});
-
+  console.log(item);
   useEffect(() => {
     axiosWithAuth()
       .put("user/card", formData)
