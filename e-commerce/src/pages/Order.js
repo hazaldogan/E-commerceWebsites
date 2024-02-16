@@ -136,7 +136,11 @@ export default function Order() {
                       <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
                         <div className="relative w-auto my-6 mx-auto max-w-3xl">
                           <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
-                            <AddressForm setShowModal={setShowModal} />
+                            <AddressForm
+                              setShowModal={setShowModal}
+                              addresses={addresses}
+                              setAddresses={setAddresses}
+                            />
                           </div>
                         </div>
                       </div>
@@ -201,7 +205,11 @@ export default function Order() {
                 <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
                   <div className="relative w-auto my-6 mx-auto max-w-3xl">
                     <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
-                      <CartForm setShowModalCard={setShowModalCard} />
+                      <CartForm
+                        setShowModalCard={setShowModalCard}
+                        cards={cards}
+                        setCards={setCards}
+                      />
                     </div>
                   </div>
                 </div>

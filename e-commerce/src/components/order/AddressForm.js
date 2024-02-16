@@ -11,7 +11,7 @@ import axios from "axios";
 import axiosWithAuth from "../../api/axiosWithAuth";
 
 export default function AddressForm(props) {
-  const { setShowModal } = props;
+  const { setShowModal, addresses, setAddresses } = props;
   const dispatch = useDispatch();
   const {
     register,
@@ -54,11 +54,12 @@ export default function AddressForm(props) {
       .post("user/address", address)
       .then((res) => {
         console.log(res);
+        setAddresses([...addresses, res.data]);
+        setShowModal(false);
       })
       .catch((err) => {
         console.log(err);
       });
-    setShowModal(false);
   };
 
   return (
