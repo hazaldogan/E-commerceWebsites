@@ -9,8 +9,8 @@ export default function CartForm({ setShowModalCard, setCards, cards }) {
   } = useForm({
     defaultValues: {
       card_no: "",
-      expire_month: "",
-      expire_year: "",
+      expire_month: 0,
+      expire_year: 0,
       name_on_card: "",
     },
     mode: "onBlur",
@@ -20,7 +20,7 @@ export default function CartForm({ setShowModalCard, setCards, cards }) {
     axiosWithAuth()
       .post("user/card", card)
       .then((res) => {
-        setCards(...cards, card);
+        setCards([...cards, res.data]);
         setShowModalCard(false);
       })
       .catch((err) => {

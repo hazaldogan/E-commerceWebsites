@@ -37,31 +37,30 @@ export default function ProductCard({ value }) {
   };
 
   return (
-    <Link
-      className="flex flex-col text-center w-[20%] max-sm:w-full items-center justify-center no-underline shadow-md rounded-md"
-      to={productURL}
-    >
-      <div className="h-[300px] max-sm:h-full">
-        <img
-          src={value.images[0].url}
-          className="max-w-full h-[300px] object-cover items-center"
-        />
-      </div>
-      <div className="p-6 flex-col gap-2">
-        <h5 className="text-slate-800 text-base font-bold ">{value.name}</h5>
-        <h5 className="text-neutral-400 text-sm font-bold ">
-          {value.description}
-        </h5>
-        <div className="flex gap-1 justify-center">
-          <h5 className="text-teal-700 text-base font-bold">{value.price}</h5>
+    <div className="flex flex-col text-center w-[20%] max-sm:w-full items-center justify-center no-underline shadow-md rounded-md">
+      <Link className="" to={productURL}>
+        <div className="h-[300px] max-sm:h-full">
+          <img
+            src={value.images[0].url}
+            className="max-w-full h-[300px] object-cover items-center"
+          />
         </div>
-        <button
-          className="border p-2 rounded-md bg-sky-300 text-white text-sm"
-          onClick={addToCartHandler}
-        >
-          Add To Cart
-        </button>
-      </div>
-    </Link>
+        <div className="p-6 flex-col gap-2">
+          <h5 className="text-slate-800 text-base font-bold ">{value.name}</h5>
+          <h5 className="text-neutral-400 text-sm font-bold ">
+            {value.description}
+          </h5>
+          <div className="flex gap-1 justify-center">
+            <h5 className="text-teal-700 text-base font-bold">{value.price}</h5>
+          </div>
+        </div>
+      </Link>
+      <button
+        className="border p-2 mb-2 rounded-md bg-sky-300 text-white text-sm"
+        onClick={addToCartHandler}
+      >
+        Add To Cart
+      </button>
+    </div>
   );
 }
