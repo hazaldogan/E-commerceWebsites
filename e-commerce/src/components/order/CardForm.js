@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import axiosWithAuth from "../../api/axiosWithAuth";
 
-export default function CartForm({ setShowModalCard }) {
+export default function CartForm({ setShowModalCard, setCards, cards }) {
   const {
     register,
     handleSubmit,
@@ -20,12 +20,12 @@ export default function CartForm({ setShowModalCard }) {
     axiosWithAuth()
       .post("user/card", card)
       .then((res) => {
-        console.log("response");
+        setCards(...cards, card);
+        setShowModalCard(false);
       })
       .catch((err) => {
         console.log(err);
       });
-    setShowModalCard(false);
   };
 
   return (
