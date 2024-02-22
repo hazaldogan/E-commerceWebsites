@@ -54,7 +54,7 @@ export default function AddressForm(props) {
       .post("user/address", address)
       .then((res) => {
         console.log(res);
-        setAddresses([...addresses, res.data]);
+        setAddresses([...addresses, res.data[0]]);
         setShowModal(false);
       })
       .catch((err) => {

@@ -20,7 +20,7 @@ export default function CartForm({ setShowModalCard, setCards, cards }) {
     axiosWithAuth()
       .post("user/card", card)
       .then((res) => {
-        setCards([...cards, res.data]);
+        setCards([...cards, res.data[0]]);
         setShowModalCard(false);
       })
       .catch((err) => {
